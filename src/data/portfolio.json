@@ -1,0 +1,108 @@
+{
+  "hero": {
+    "name": "Its_Ley",
+    "role": "Developer",
+    "bio": "I build small, sharp things — from character-level language models to disaster-response dashboards. I care about clean code, fast interfaces, and learning in public.",
+    "location": "Remote",
+    "email": "cidstaz@gmail.com",
+    "avatar": "https://avatars.githubusercontent.com/u/225296385?v=4"
+  },
+  "navLinks": [
+    { "id": "home", "label": "Home", "url": "/" },
+    { "id": "projects", "label": "Projects", "url": "/projects" },
+    { "id": "about", "label": "About", "url": "/about" },
+    { "id": "contact", "label": "Contact", "url": "/contact" }
+  ],
+  "stats": [
+    { "value": "2", "label": "Public projects" },
+    { "value": "8+", "label": "Technologies" },
+    { "value": "100%", "label": "Self-taught" }
+  ],
+  "featured": ["mini-llm", "islasafe-frontend"],
+  "projects": [
+    {
+      "id": "mini-llm",
+      "name": "mini-llm",
+      "tagline": "A small character-level language model built with PyTorch.",
+      "description": "A from-scratch language model you can train on your own text and chat with in the terminal. Includes a training script with automatic CUDA detection, CPU-friendly configuration presets for common hardware, checkpoint saving, and an interactive agent with chat memory and sampling controls.",
+      "tech": ["Python", "PyTorch", "NumPy"],
+      "url": "https://github.com/leytofu/mini-llm",
+      "period": "2026",
+      "points": [
+        "Character-level transformer trained with a single `python train.py` command",
+        "Interactive chat agent with memory, /save, /clear, and temperature controls",
+        "Auto-selects CUDA when available, with tuned CPU presets for low-end hardware",
+        "Checkpoints saved to checkpoints/mini_llm.pt for instant inference after training"
+      ]
+    },
+    {
+      "id": "islasafe-frontend",
+      "name": "IslaSafe Admin",
+      "tagline": "React + TypeScript dashboard for monitoring SOS requests and hazards.",
+      "description": "An admin web app for monitoring SOS requests, incidents, hazard maps, evacuation centers, advisories, residents, and weather conditions. Built with Vite, Tailwind CSS, and MapLibre GL for interactive map views, with all configuration read from environment variables.",
+      "tech": ["React", "TypeScript", "Vite", "Tailwind CSS", "MapLibre GL"],
+      "url": "https://github.com/leytofu/IslaSafeFrontend",
+      "period": "2026",
+      "points": [
+        "Live monitoring of SOS requests, incidents, and weather conditions",
+        "Interactive hazard and evacuation-center maps powered by MapLibre GL",
+        "Feature-based folder structure with shared UI primitives",
+        "Env-driven configuration via a typed environment module and oxlint checks"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Independent",
+      "role": "Self-taught Developer",
+      "period": "2024 — Present",
+      "location": "Remote",
+      "tag": "Full-time",
+      "points": [
+        "Built and shipped mini-llm, a trainable character-level language model in PyTorch",
+        "Developed the IslaSafe admin dashboard (React, TypeScript, MapLibre) for SOS and hazard monitoring",
+        "Practice daily with TypeScript, React, Vite, and Tailwind CSS — learning by shipping"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Your School",
+      "title": "Your Degree / Course of Study",
+      "timeRange": "2023 — 2027",
+      "description": "Replace this entry in src/data/portfolio.json with your own education history."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["TypeScript", "JavaScript", "Python", "HTML", "CSS"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["React", "Vite", "Tailwind CSS", "MapLibre GL", "Responsive UI"]
+    },
+    {
+      "category": "Tooling",
+      "items": ["Git", "GitHub", "VS Code", "Oxlint", "PowerShell"]
+    },
+    {
+      "category": "Learning",
+      "items": ["PyTorch", "LLMs", "Transformers", "System design"]
+    }
+  ],
+  "contacts": [
+    { "label": "Email", "value": "you@example.com", "url": "mailto:you@example.com" },
+    { "label": "GitHub", "value": "github.com/leytofu", "url": "https://github.com/leytofu" },
+    { "label": "Location", "value": "Remote", "url": "" }
+  ],
+  "socialMedia": [
+    { "label": "GitHub", "username": "@leytofu", "url": "https://github.com/leytofu" }
+  ],
+  "footer": [
+    { "label": "Projects", "url": "/projects" },
+    { "label": "About", "url": "/about" },
+    { "label": "Contact", "url": "/contact" },
+    { "label": "GitHub", "url": "https://github.com/leytofu", "external": true }
+  ]
+}
