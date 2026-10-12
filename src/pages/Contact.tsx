@@ -1,5 +1,4 @@
 import { PageHeader } from '@/components/PageHeader'
-import { Reveal } from '@/components/Reveal'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import portfolio from '@/data/portfolio.json'
 
@@ -9,81 +8,67 @@ export default function Contact() {
   return (
     <>
       <PageHeader
-        label="Contact"
-        title="Get in touch"
-        description="Have a project, a question, or just want to say hi? Pick a channel below."
+        label="GET IN TOUCH"
+        title="Let's build something"
+        description="Have a project in mind, a question, or want to collaborate? Reach out through any of the channels below."
       />
 
-      <section className="relative border-b border-border px-6 py-14 sm:px-10 md:py-20">
-        <Reveal>
-          <span className="label">Email</span>
-          <a
-            href={`mailto:${portfolio.hero.email}`}
-            className="link-underline mt-3 block font-mono text-2xl font-medium tracking-tight break-all hover:text-foreground sm:text-3xl md:text-4xl"
-          >
-            {portfolio.hero.email}
-          </a>
-        </Reveal>
+      <div className="page page--compact">
+        {/* Main Email Box */}
+        <section className="contact-card">
+          <div className="contact-card__header">
+            <span className="contact-card__label">Direct Email</span>
+            <a href={`mailto:${portfolio.hero.email}`} className="contact-card__email">
+              {portfolio.hero.email}
+            </a>
+          </div>
 
-        <div className="mt-14 border-t border-border">
-          {portfolio.contacts.map((contact, i) => {
-            const content = (
-              <>
-                <span className="label md:w-40 md:shrink-0">{contact.label}</span>
-                <span className="font-mono text-sm md:text-base">{contact.value}</span>
-                {contact.url && (
-                  <span
-                    aria-hidden="true"
-                    className="ml-auto text-muted-foreground transition-transform md:translate-x-0 group-hover:translate-x-1"
-                  >
-                    ↗
-                  </span>
-                )}
-              </>
-            )
-
-            return (
-              <Reveal key={contact.label} delay={i * 0.06}>
+          {/* Contact Table */}
+          <div className="contact-table">
+            {portfolio.contacts.map((contact) => (
+              <div key={contact.label} className="contact-row">
+                <span className="contact-row__label">{contact.label}</span>
+                <span className="contact-row__value">{contact.value}</span>
                 {contact.url ? (
                   <a
                     href={contact.url}
                     target={contact.url.startsWith('mailto:') ? undefined : '_blank'}
                     rel="noreferrer"
-                    className="group flex items-center gap-4 border-b border-border py-5 transition-colors hover:text-foreground"
+                    className="contact-row__link"
                   >
-                    {content}
+                    Connect ↗
                   </a>
                 ) : (
-                  <div className="flex items-center gap-4 border-b border-border py-5 text-muted-foreground">
-                    {content}
-                  </div>
+                  <span className="contact-row__none">—</span>
                 )}
-              </Reveal>
-            )
-          })}
-        </div>
-
-        <div className="mt-14">
-          <span className="label">Elsewhere</span>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {portfolio.socialMedia.map((social, i) => (
-              <Reveal key={social.label} delay={i * 0.06}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 border border-border px-4 py-2.5 text-sm transition-colors hover:border-foreground"
-                >
-                  {social.label}
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {social.username}
-                  </span>
-                </a>
-              </Reveal>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Elsewhere Social Badges */}
+        <section className="contact-socials">
+          <div className="section-head">
+            <span className="section-head__bar" />
+            <h2 className="section-head__title section-head__title--md">Social Profiles</h2>
+          </div>
+
+          <div className="socials-row">
+            {portfolio.socialMedia.map((social) => (
+              <a
+                key={social.label}
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+                className="social-chip"
+              >
+                <span className="social-chip__label">{social.label}</span>
+                <span className="social-chip__handle">{social.username}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
     </>
   )
 }

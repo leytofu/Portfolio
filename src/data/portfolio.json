@@ -1,107 +1,148 @@
 {
   "hero": {
-    "name": "Its_Ley",
-    "role": "Developer",
-    "bio": "I build small, sharp things — from character-level language models to disaster-response dashboards. I care about clean code, fast interfaces, and learning in public.",
-    "location": "Remote",
-    "email": "cidstaz@gmail.com",
+    "name": "Charlie",
+    "firstName": "Charlie",
+    "lastName": "Nozares",
+    "role": "Full Stack Developer",
+    "bio": "I build modern web applications using Laravel, React, TypeScript and more. I love turning ideas into real projects and solving problems with code.",
+    "about": "I'm a 4th year IT college student with a passion for web development and technology. I enjoy learning new tools, building useful projects, and continuously improving my skills. My goal is to become a full stack developer and create solutions that make a positive impact.",
+    "school": "TMC IT Student (SY 2023 – 2027)",
+    "location": "Based in Philippines",
+    "status": "Open to Work",
+    "email": "leycharputhboyles@gmail.com",
     "avatar": "https://avatars.githubusercontent.com/u/225296385?v=4"
   },
   "navLinks": [
     { "id": "home", "label": "Home", "url": "/" },
-    { "id": "projects", "label": "Projects", "url": "/projects" },
     { "id": "about", "label": "About", "url": "/about" },
+    { "id": "projects", "label": "Projects", "url": "/projects" },
+    { "id": "skills", "label": "Skills", "url": "/skills" },
+    { "id": "resume", "label": "Resume", "url": "/resume" },
     { "id": "contact", "label": "Contact", "url": "/contact" }
   ],
   "stats": [
-    { "value": "2", "label": "Public projects" },
-    { "value": "8+", "label": "Technologies" },
-    { "value": "100%", "label": "Self-taught" }
+    { "value": "3+", "label": "Key Projects" },
+    { "value": "9+", "label": "Technologies" },
+    { "value": "4th", "label": "Year IT Student" }
   ],
-  "featured": ["mini-llm", "islasafe-frontend"],
+  "featured": [
+    "laravel-food-reservation",
+    "islasafe",
+    "tmc-llm-local"
+  ],
   "projects": [
     {
-      "id": "mini-llm",
-      "name": "mini-llm",
-      "tagline": "A small character-level language model built with PyTorch.",
-      "description": "A from-scratch language model you can train on your own text and chat with in the terminal. Includes a training script with automatic CUDA detection, CPU-friendly configuration presets for common hardware, checkpoint saving, and an interactive agent with chat memory and sampling controls.",
-      "tech": ["Python", "PyTorch", "NumPy"],
-      "url": "https://github.com/leytofu/mini-llm",
-      "period": "2026",
+      "id": "laravel-food-reservation",
+      "name": "Laravel Food Reservation",
+      "tagline": "A food reservation system with user roles, dashboard and online booking.",
+      "techStack": "Laravel 12 • PHP • MySQL",
+      "description": "A food reservation system with user roles, dashboard and online booking. Built with Laravel 12, PHP, and MySQL to streamline restaurant bookings, menu management, and administrative tracking.",
+      "tech": ["Laravel 12", "PHP", "MySQL", "Tailwind CSS"],
+      "url": "https://github.com/leytofu/laravel-food-reservation",
+      "period": "2025",
       "points": [
-        "Character-level transformer trained with a single `python train.py` command",
-        "Interactive chat agent with memory, /save, /clear, and temperature controls",
-        "Auto-selects CUDA when available, with tuned CPU presets for low-end hardware",
-        "Checkpoints saved to checkpoints/mini_llm.pt for instant inference after training"
+        "User role authentication and permissions for admin, staff, and customers",
+        "Interactive table and food booking dashboard with real-time reservation status",
+        "Automated order tracking and reservation management with email confirmation",
+        "Modern responsive administrative UI with live analytics and report export"
       ]
     },
     {
-      "id": "islasafe-frontend",
-      "name": "IslaSafe Admin",
-      "tagline": "React + TypeScript dashboard for monitoring SOS requests and hazards.",
-      "description": "An admin web app for monitoring SOS requests, incidents, hazard maps, evacuation centers, advisories, residents, and weather conditions. Built with Vite, Tailwind CSS, and MapLibre GL for interactive map views, with all configuration read from environment variables.",
-      "tech": ["React", "TypeScript", "Vite", "Tailwind CSS", "MapLibre GL"],
+      "id": "islasafe-emergency",
+      "name": "IslaSafe Emergency System",
+      "tagline": "SOS and incident monitoring system with real-time map and notifications.",
+      "techStack": "Laravel • React • Firebase",
+      "description": "SOS and incident monitoring system with real-time map and notifications. Integrates Laravel backend with React frontend and Firebase real-time listeners for fast emergency response and hazard tracking.",
+      "tech": ["Laravel", "React", "Firebase", "TypeScript", "MapLibre GL"],
       "url": "https://github.com/leytofu/IslaSafeFrontend",
-      "period": "2026",
+      "period": "2025",
       "points": [
-        "Live monitoring of SOS requests, incidents, and weather conditions",
-        "Interactive hazard and evacuation-center maps powered by MapLibre GL",
-        "Feature-based folder structure with shared UI primitives",
-        "Env-driven configuration via a typed environment module and oxlint checks"
+        "SOS and incident monitoring system with real-time map and notifications",
+        "Interactive GPS hazard overlays and evacuation center routing powered by MapLibre GL",
+        "Real-time alerts and status updates broadcasted immediately with Firebase",
+        "Dispatcher management dashboard for incident triaging and status logs"
+      ]
+    },
+    {
+      "id": "tmc-llm-local",
+      "name": "TMC-LLM Local AI Model",
+      "tagline": "Fine-tuned local LLM for TMC knowledge with offline assistant.",
+      "techStack": "Python • GGUF • 9router",
+      "description": "Fine-tuned local LLM for TMC knowledge with offline assistant. Packaged with quantized GGUF weights to run entirely on local consumer hardware without cloud API dependencies.",
+      "tech": ["Python", "GGUF", "9router", "PyTorch"],
+      "url": "https://github.com/leytofu/mini-llm",
+      "period": "2025",
+      "points": [
+        "Fine-tuned local LLM for TMC knowledge with offline assistant",
+        "GGUF quantization for fast local CPU/GPU inference with minimal RAM footprint",
+        "Offline chatbot terminal and desktop interface with memory and sampling controls",
+        "Trained on institutional curricula and documentation for reliable answers"
       ]
     }
   ],
   "experience": [
     {
-      "company": "Independent",
-      "role": "Self-taught Developer",
+      "company": "Full Stack Projects & Academic Development",
+      "role": "Full Stack Developer & Student",
       "period": "2024 — Present",
-      "location": "Remote",
-      "tag": "Full-time",
+      "location": "Philippines",
+      "tag": "Active",
       "points": [
-        "Built and shipped mini-llm, a trainable character-level language model in PyTorch",
-        "Developed the IslaSafe admin dashboard (React, TypeScript, MapLibre) for SOS and hazard monitoring",
-        "Practice daily with TypeScript, React, Vite, and Tailwind CSS — learning by shipping"
+        "Built and deployed the Laravel Food Reservation platform with full role management and online table booking",
+        "Architected the IslaSafe Emergency System connecting Laravel, React, and Firebase for real-time disaster alerts",
+        "Fine-tuned and deployed TMC-LLM Local AI Model in GGUF format for offline institutional knowledge assistance",
+        "Continuously exploring modern web frameworks, API design, and distributed systems"
       ]
     }
   ],
   "education": [
     {
-      "school": "Your School",
-      "title": "Your Degree / Course of Study",
-      "timeRange": "2023 — 2027",
-      "description": "Replace this entry in src/data/portfolio.json with your own education history."
+      "school": "TMC (Trinidad Municipal College)",
+      "title": "Bachelor of Science in Information Technology (BSIT)",
+      "timeRange": "SY 2023 – 2027 (4th Year)",
+      "description": "Focusing on Software Engineering, Web Systems, Database Management, and Cloud Computing. Actively building production-grade applications and local AI systems."
     }
   ],
   "skills": [
     {
-      "category": "Languages",
-      "items": ["TypeScript", "JavaScript", "Python", "HTML", "CSS"]
+      "category": "Backend",
+      "items": ["Laravel", "PHP", "MySQL", "MySQL", "MySQL", "Node.js"]
     },
     {
       "category": "Frontend",
-      "items": ["React", "Vite", "Tailwind CSS", "MapLibre GL", "Responsive UI"]
+      "items": ["React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML/CSS"]
     },
     {
-      "category": "Tooling",
-      "items": ["Git", "GitHub", "VS Code", "Oxlint", "PowerShell"]
-    },
-    {
-      "category": "Learning",
-      "items": ["PyTorch", "LLMs", "Transformers", "System design"]
+      "category": "AI & Tools",
+      "items": ["Python", "GGUF", "Git", "VS Code", "Firebase"]
     }
   ],
+  "coreTech": [
+    { "name": "Laravel", "color": "#f05340", "type": "backend" },
+    { "name": "PHP", "color": "#777bb4", "type": "backend" },
+    { "name": "React", "color": "#61dafb", "type": "frontend" },
+    { "name": "TypeScript", "color": "#3178c6", "type": "frontend" },
+    { "name": "JavaScript", "color": "#f7df1e", "type": "frontend" },
+    { "name": "MySQL", "color": "#4479a1", "type": "database" },
+    { "name": "PostgreSQL", "color": "#336791", "type": "database" },
+    { "name": "Git", "color": "#f05032", "type": "tool" },
+    { "name": "VS Code", "color": "#007acc", "type": "tool" }
+  ],
   "contacts": [
-    { "label": "Email", "value": "you@example.com", "url": "mailto:you@example.com" },
+    { "label": "Email", "value": "leychaputhboyles@gmail.com", "url": "mailto:leychaputhboyles@gmail.com" },
     { "label": "GitHub", "value": "github.com/leytofu", "url": "https://github.com/leytofu" },
-    { "label": "Location", "value": "Remote", "url": "" }
+    { "label": "LinkedIn", "value": "linkedin.com/in/charlie-nozares", "url": "https://linkedin.com" },
+    { "label": "Location", "value": "Philippines", "url": "" }
   ],
   "socialMedia": [
-    { "label": "GitHub", "username": "@leytofu", "url": "https://github.com/leytofu" }
+    { "label": "GitHub", "username": "@leytofu", "url": "https://github.com/leytofu" },
+    { "label": "LinkedIn", "username": "charlie", "url": "https://linkedin.com" },
+    { "label": "Email", "username": "leychaputhboyles@gmail.com", "url": "mailto:leychaputhboyles@gmail.com" }
   ],
   "footer": [
-    { "label": "Projects", "url": "/projects" },
+    { "label": "Home", "url": "/" },
     { "label": "About", "url": "/about" },
+    { "label": "Projects", "url": "/projects" },
     { "label": "Contact", "url": "/contact" },
     { "label": "GitHub", "url": "https://github.com/leytofu", "external": true }
   ]

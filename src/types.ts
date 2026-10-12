@@ -6,8 +6,13 @@ export interface NavLink {
 
 export interface Hero {
   name: string
+  firstName?: string
+  lastName?: string
   role: string
   bio: string
+  about?: string
+  school?: string
+  status?: string
   location: string
   email: string
   avatar: string
@@ -22,6 +27,7 @@ export interface Project {
   id: string
   name: string
   tagline: string
+  techStack?: string
   description: string
   tech: string[]
   url: string
@@ -70,6 +76,12 @@ export interface FooterLink {
   external?: boolean
 }
 
+export interface TechBadge {
+  name: string
+  color: string
+  type: string
+}
+
 export interface PortfolioData {
   hero: Hero
   navLinks: NavLink[]
@@ -79,6 +91,7 @@ export interface PortfolioData {
   experience: Experience[]
   education: Education[]
   skills: SkillCategory[]
+  coreTech: TechBadge[]
   contacts: ContactMethod[]
   socialMedia: SocialLink[]
   footer: FooterLink[]

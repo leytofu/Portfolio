@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
-import { Cross } from '@/components/Cross'
+import { ProjectThumbnail } from '@/components/Thumbnails'
+import { TechIcon } from '@/components/icons'
 import { NotFound } from '@/pages/NotFound'
-import { Reveal } from '@/components/Reveal'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import portfolio from '@/data/portfolio.json'
 
@@ -14,87 +14,70 @@ export default function ProjectDetail() {
   if (!project) return <NotFound />
 
   return (
-    <>
-      <section className="grid-bg relative border-b border-border">
-        <Cross className="top-0 left-0" />
-        <Cross className="top-0 right-0" />
+    <div className="page page--compact">
+      {/* Back Link */}
+      <div>
+        <Link to="/projects" className="back-link">
+          <span>← All Projects</span>
+        </Link>
+      </div>
 
-        <div className="px-6 pt-16 pb-14 sm:px-10 md:pt-20">
-          <Link to="/projects" className="label link-underline hover:text-foreground">
-            ← All projects
-          </Link>
+      {/* Header Banner */}
+      <section className="detail-hero">
+        <div className="detail-hero__content">
+          <span className="detail-hero__period">{project.period} PROJECT</span>
+          <h1 className="detail-hero__title">{project.name}</h1>
+          <p className="detail-hero__tagline">{project.tagline}</p>
 
-          <div className="mt-8 flex flex-wrap items-start justify-between gap-6">
-            <div>
-              <span className="label">{project.period}</span>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-                {project.name}
-              </h1>
-              <p className="mt-4 max-w-2xl text-pretty text-muted-foreground sm:text-lg">
-                {project.tagline}
-              </p>
-            </div>
+          <div className="tech-row">
+            {project.tech.map((t) => (
+              <span key={t} className="tech-chip">
+                <TechIcon name={t} />
+                {t}
+              </span>
+            ))}
+          </div>
 
+          <div className="detail-hero__cta">
             <a
               href={project.url}
               target="_blank"
               rel="noreferrer"
-              className="border border-foreground bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
+              className="btn-github"
             >
-              View source ↗
+              <span>View Source on GitHub</span>
+              <span>↗</span>
             </a>
           </div>
+        </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="border border-border px-2.5 py-1 font-mono text-[11px] tracking-wide text-muted-foreground"
-              >
-                {tech}
-              </span>
+        <div className="detail-hero__thumb">
+          <ProjectThumbnail id={project.id} />
+        </div>
+      </section>
+
+      {/* Overview & Key Highlights */}
+      <section className="detail-body">
+        <div className="detail-body__overview">
+          <div className="section-head">
+            <span className="section-head__bar" />
+            <h2 className="section-head__title section-head__title--md">Project Overview</h2>
+          </div>
+          <p>{project.description}</p>
+        </div>
+
+        <div className="detail-body__features">
+          <h3>Key Features & Implementation Points</h3>
+          <ul className="feature-grid">
+            {project.points.map((point, i) => (
+              <li key={point}>
+                <span className="num">{String(i + 1).padStart(2, '0')}</span>
+                <span>{point}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
-
-      <section className="relative border-b border-border px-6 py-14 sm:px-10 md:py-20">
-        <Cross className="top-0 left-0" />
-        <Cross className="top-0 right-0" />
-
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[220px_1fr] md:gap-14">
-          <span className="label">Overview</span>
-          <div className="max-w-3xl">
-            <Reveal>
-              <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-                {project.description}
-              </p>
-            </Reveal>
-
-            <ul className="mt-10 flex flex-col">
-              {project.points.map((point, i) => (
-                <Reveal key={point} delay={i * 0.06}>
-                  <li className="flex gap-4 border-t border-border py-4 text-sm leading-relaxed">
-                    <span className="label shrink-0 pt-0.5">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span>{point}</span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-
-            <Reveal delay={0.2}>
-              <Link
-                to="/contact"
-                className="label link-underline mt-10 inline-block hover:text-foreground"
-              >
-                Discuss a similar project →
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   )
 }
