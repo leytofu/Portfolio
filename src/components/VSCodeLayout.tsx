@@ -18,7 +18,7 @@ const TABS: TabItem[] = [
   { id: 'about', label: 'about.html', path: '/about' },
   { id: 'projects', label: 'projects.html', path: '/projects' },
   { id: 'skills', label: 'skills.html', path: '/skills' },
-  { id: 'resume', label: 'resume.pdf', path: '/resume' },
+  { id: 'resume', label: 'resume.html', path: '/resume' },
   { id: 'contact', label: 'contact.html', path: '/contact' },
 ]
 
