@@ -4,7 +4,7 @@ import portfolio from '@/data/portfolio.json'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { CommandPalette } from '@/components/CommandPalette'
 import { TerminalPanel } from '@/components/TerminalPanel'
-import { HtmlIcon, CssIcon, VscodeIcon } from './icons'
+import { HtmlIcon, CssIcon, TailwindIcon, VscodeIcon } from './icons'
 import { useResumeAvailable } from '@/hooks/useResumeAvailable'
 
 interface TabItem {
@@ -18,8 +18,8 @@ const TABS: TabItem[] = [
   { id: 'about', label: 'about.html', path: '/about' },
   { id: 'projects', label: 'projects.html', path: '/projects' },
   { id: 'skills', label: 'skills.html', path: '/skills' },
-  { id: 'contact', label: 'contact.html', path: '/contact' },
   { id: 'resume', label: 'resume.pdf', path: '/resume' },
+  { id: 'contact', label: 'contact.html', path: '/contact' },
 ]
 
 export function VSCodeLayout({ children }: { children: React.ReactNode }) {
@@ -310,7 +310,7 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
 
           <div className="activitybar__bottom">
             <a href={`mailto:${portfolio.hero.email}`} title="Account Contact" className="activity-avatar">
-              SC
+              leych
             </a>
             <button
               type="button"
@@ -357,11 +357,17 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
                         <CssIcon />
                         <span>style.css</span>
                       </div>
+                      <div className="explorer__file">
+                        <TailwindIcon />
+                        <span>tailwind.css</span>
+                      </div>
                     </div>
+{/*
                     <button type="button" className="explorer__folder">
                       <span className="explorer__folder-arrow">&gt;</span>
                       <span>js</span>
                     </button>
+*/}
                     <button type="button" className="explorer__folder">
                       <span className="explorer__folder-arrow">&gt;</span>
                       <span>images</span>

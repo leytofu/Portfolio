@@ -1,6 +1,6 @@
 {
   "hero": {
-    "name": "Charlie",
+    "name": "Charlie Nozares Boyles",
     "firstName": "Charlie",
     "lastName": "Nozares",
     "role": "Full Stack Developer",
@@ -26,14 +26,14 @@
     { "value": "4th", "label": "Year IT Student" }
   ],
   "featured": [
-    "laravel-food-reservation",
+    "food-reservation",
     "islasafe",
     "tmc-llm-local"
   ],
   "projects": [
     {
       "id": "laravel-food-reservation",
-      "name": "Laravel Food Reservation",
+      "name": "Food Reservation",
       "tagline": "A food reservation system with user roles, dashboard and online booking.",
       "techStack": "Laravel 12 • PHP • MySQL",
       "description": "A food reservation system with user roles, dashboard and online booking. Built with Laravel 12, PHP, and MySQL to streamline restaurant bookings, menu management, and administrative tracking.",
@@ -49,7 +49,7 @@
     },
     {
       "id": "islasafe-emergency",
-      "name": "IslaSafe Emergency System",
+      "name": "IslaSafe System",
       "tagline": "SOS and incident monitoring system with real-time map and notifications.",
       "techStack": "Laravel • React • Firebase",
       "description": "SOS and incident monitoring system with real-time map and notifications. Integrates Laravel backend with React frontend and Firebase real-time listeners for fast emergency response and hazard tracking.",
@@ -106,7 +106,7 @@
   "skills": [
     {
       "category": "Backend",
-      "items": ["Laravel", "PHP", "MySQL", "MySQL", "MySQL", "Node.js"]
+      "items": ["Laravel", "PHP", "MySQL", "Node.js"]
     },
     {
       "category": "Frontend",

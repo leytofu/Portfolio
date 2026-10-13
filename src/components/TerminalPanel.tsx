@@ -16,7 +16,7 @@ interface TerminalPanelProps {
 
 export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelProps) {
   const [activeTab, setActiveTab] = useState<'terminal' | 'problems' | 'output' | 'debug'>('terminal')
-  const [inputVal, setInputVal] = useState('')
+  const [inputVal, setInputVal] = useState('whoami')
   const [isMaximized, setIsMaximized] = useState(false)
   const [history, setHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
@@ -88,6 +88,7 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
   cv                  Request CV copy
   date                Print current timestamp
   clear               Clear terminal buffer
+  exit                Close the terminal panel
   help                Display this manual`,
         })
         break
@@ -211,6 +212,11 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
 
       case 'clear':
         setLines([])
+        return
+
+      case 'exit':
+      case 'quit':
+        onClose()
         return
 
       default:
