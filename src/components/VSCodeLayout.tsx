@@ -603,9 +603,10 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
 
         {/* Right Line Specs */}
         <div className="statusbar__right">
-          <span>Ln 1, Col 1</span>
-          <span className="spaces">Spaces: 2</span>
+          <span>✓✓Prettier</span>
+          <span className="spaces">⏱︎Today: 1h 7m</span>
           <span>UTF-8</span>
+          <span>LF</span>
           <span className="lang">HTML</span>
           <span className="bell">🔔</span>
         </div>

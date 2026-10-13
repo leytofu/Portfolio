@@ -79,7 +79,7 @@ export default function Contact() {
                   name="name"
                   type="text"
                   autoComplete="name"
-                  placeholder="Ada Lovelace"
+                  placeholder="yourname"
                   value={form.name}
                   onChange={(e) => update('name', e.target.value)}
                   className={`contact-field__control${fieldError(nameValid)}`}
@@ -95,7 +95,7 @@ export default function Contact() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@domain.com"
+                  placeholder="youremail@example.com"
                   value={form.email}
                   onChange={(e) => update('email', e.target.value)}
                   className={`contact-field__control${fieldError(emailValid)}`}
