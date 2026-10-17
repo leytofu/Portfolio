@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'motion/react'
 import { PageTransition } from '@/components/PageTransition'
 import { ScrollToTop } from '@/components/ScrollToTop'
-import { ThemeBlurOverlay } from '@/components/ThemeBlurOverlay'
 import { VSCodeLayout } from '@/components/VSCodeLayout'
 import About from '@/pages/About'
 import Contact from '@/pages/Contact'
@@ -18,10 +17,6 @@ function Shell() {
 
   return (
     <>
-      {/* Theme-switch blur layer. Rendered as a sibling of the layout so no
-          transformed ancestor can turn `position: fixed` into a containing
-          block. `pointer-events: none` keeps it fully non-interactive. */}
-      <ThemeBlurOverlay />
       <VSCodeLayout>
         <ScrollToTop />
         <AnimatePresence mode="wait" initial={false}>

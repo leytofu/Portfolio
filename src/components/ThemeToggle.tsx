@@ -1,59 +1,15 @@
-import { useEffect, useState } from 'react'
-
-type Theme = 'light' | 'dark'
-
-function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'dark'
-  try {
-    const stored = localStorage.getItem('theme') as Theme | null
-    if (stored === 'light' || stored === 'dark') return stored
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
-  } catch {
-    /* storage unavailable */
-  }
-  return 'dark'
-}
+import { useEffect } from 'react'
+import { toggleTheme, useTheme } from '@/hooks/useTheme'
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme)
+  const theme = useTheme()
 
-  // Remove initial page load transition lock after first frame
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       document.documentElement.classList.remove('preload-no-transition')
     })
     return () => cancelAnimationFrame(frame)
   }, [])
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark'
-
-    // Only run the blur + slow colour ramp when motion is welcome.
-    // Under prefers-reduced-motion the switch stays instant (the global
-    // reduced-motion rule already collapses every transition).
-    const allowMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (allowMotion) {
-      // The overlay removes the class itself on animationend. If a second
-      // toggle lands mid-animation we simply leave the class in place — the
-      // running veil keeps going and the new colour change happens under it.
-      // Deliberately no `offsetWidth` reflow here: forcing layout on the
-      // click frame is itself a visible stall on a large page.
-      document.documentElement.classList.add('theme-transitioning')
-    }
-
-    // Synchronously mutate DOM attributes on the exact click frame.
-    // data-theme is set in the same turn as the class above, so the
-    // colour transition that starts now already resolves the 1000ms token.
-    document.documentElement.setAttribute('data-theme', nextTheme)
-    document.documentElement.classList.toggle('dark', nextTheme === 'dark')
-    try {
-      localStorage.setItem('theme', nextTheme)
-    } catch {
-      /* storage unavailable */
-    }
-    setTheme(nextTheme)
-  }
 
   return (
     <button

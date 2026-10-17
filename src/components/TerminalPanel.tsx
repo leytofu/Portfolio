@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import portfolio from '@/data/portfolio.json'
+import { setTheme } from '@/hooks/useTheme'
 
 interface OutputLine {
   id: string
@@ -174,9 +175,7 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
           onToggleTheme?.()
           newLines.push({ id: `out-${Date.now()}`, type: 'success', content: 'Theme toggled!' })
         } else if (targetTheme === 'light' || targetTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', targetTheme)
-          document.documentElement.classList.toggle('dark', targetTheme === 'dark')
-          localStorage.setItem('theme', targetTheme)
+          setTheme(targetTheme)
           newLines.push({ id: `out-${Date.now()}`, type: 'success', content: `Theme updated to ${targetTheme}!` })
         } else {
           newLines.push({ id: `err-${Date.now()}`, type: 'error', content: 'Usage: theme [light|dark|toggle]' })

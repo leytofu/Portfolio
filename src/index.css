@@ -47,8 +47,8 @@
    ============================================================ */
 
 :root {
-  --theme-duration: 220ms;
-  --theme-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --theme-duration: 160ms;
+  --theme-timing: cubic-bezier(0.2, 0, 0, 1);
   --theme-transition: background-color var(--theme-duration) var(--theme-timing),
                       border-color var(--theme-duration) var(--theme-timing),
                       color var(--theme-duration) var(--theme-timing),
@@ -59,6 +59,7 @@
 
 :root,
 [data-theme='dark'] {
+  color-scheme: dark;
   --background: #080c16;
   --foreground: #e2e8f0;
   --muted: #0d1527;
@@ -89,7 +90,7 @@
   --text-primary: #e2e8f0;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --text-faint: #64748b;
+  --text-faint: #94a3b8;
 
   --blue-300: #93c5fd;
   --blue-400: #60a5fa;
@@ -99,6 +100,8 @@
   --sky-400: #38bdf8;
 
   --danger: #ef4444;
+  --warning: #fbbf24;
+  --purple: #c084fc;
   --success: #22c55e;
 
   --scrollbar-thumb: #1e293b;
@@ -117,6 +120,7 @@
 }
 
 [data-theme='light'] {
+  color-scheme: light;
   --background: #f8fafc;
   --foreground: #0f172a;
   --muted: #f1f5f9;
@@ -126,7 +130,7 @@
   --card-hover: #f0f6ff;
   --card-hover-border: #2563eb;
 
-  --accent: #0284c7;
+  --accent: #0369a1;
   --accent-strong: #2563eb;
   --accent-soft: rgba(37, 99, 235, 0.08);
 
@@ -147,7 +151,7 @@
   --text-primary: #1e293b;
   --text-secondary: #334155;
   --text-muted: #64748b;
-  --text-faint: #94a3b8;
+  --text-faint: #64748b;
 
   --blue-300: #2563eb;
   --blue-400: #1d4ed8;
@@ -157,7 +161,9 @@
   --sky-400: #0369a1;
 
   --danger: #dc2626;
-  --success: #16a34a;
+  --warning: #92400e;
+  --purple: #7e22ce;
+  --success: #15803d;
 
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-thumb-hover: #94a3b8;
@@ -186,31 +192,42 @@
 }
 
 /* ============================================================
-   THEME SWITCH — 1s BLUR + COLOUR RAMP
+   THEME COLOUR TRANSITIONS
    ============================================================ */
 
-/*
-   Theme-transition gap fill.
+/* A single page snapshot owns theme motion. Disable nested transitions so
+   inherited colors, gradients, borders, shadows and icons change together. */
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
 
-   Problem: a number of base-state rules declare theme colours but no
-   `transition` of their own (modifier classes like .tab--active and
-   .filter-btn--active, accents like .laptop-glow__blob--* and
-   .hero__portrait-badge__dot, and text surfaces like .term-output and
-   .cmd-item__title). CSS transitions are per-element and do NOT inherit,
-   so those snapped to the new theme on the click frame while their
-   flex/grid parents animated over 220ms — read as "outside the flex
-   still delays".
+html.theme-switching::view-transition {
+  pointer-events: none;
+}
 
-   A blanket low-specificity `*` rule was tried and rejected: it
-   out-specifies plain class rules, and CSS does not merge
-   `transition-property` from one rule with the `transition` shorthand of
-   another — the wildcard's property list would clobber `transform` and
-   `opacity` transitions on .theme-toggle, .project-card, .tab__close and
-   friends. So each gap is patched individually, reusing the same
-   --theme-duration / --theme-timing tokens so every element that now
-   transitions does so in lockstep with the rest of the page.
-*/
+html.theme-switching::view-transition-group(root) {
+  animation: none;
+}
 
+html.theme-switching::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-switching::view-transition-new(root) {
+  animation: theme-page-in 140ms ease-out both;
+  mix-blend-mode: normal;
+}
+
+@keyframes theme-page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Keep selected states and standalone accents in sync with their surfaces. */
 /* --- VS Code chrome: active/selected states & accents --- */
 .activity-btn--active,
 .explorer__link--active,
@@ -277,74 +294,6 @@
   transition: var(--theme-transition);
 }
 
-/*
-   Only during an explicit theme toggle does the blur veil run. Colour
-   transitions deliberately keep their base 220ms duration.
-
-   Why we do NOT raise --theme-duration here: that token is inherited and
-   feeds --theme-transition, which ~175 rules reference. Mutating it on
-   <html> invalidates every one of those on the click frame, forcing a
-   full-document style recalc before the first pixel moves — that was the
-   source of the visible delay. At 220ms the colours are already smooth;
-   the veil masks the swap and supplies the premium ~1s feel on its own.
-*/
-
-/*
-   Full-viewport blur layer. `pointer-events: none` means it can never
-   block clicks, typing, scrolling, or accessibility tools, and being
-   `position: fixed` with no transformed ancestor keeps it out of the
-   layout entirely (zero reflow, zero layout shift).
-*/
-.theme-blur-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2147483000;
-  pointer-events: none;
-  opacity: 0;
-  background: transparent;
-}
-
-/*
-   2px, not 4px. A 4px backdrop-filter across the whole viewport forced
-   main-thread rasterization of the page every frame while colours were
-   also repainting. 2px keeps the same soft veil at a fraction of the
-   cost, and only `opacity` animates (compositor-only).
-*/
-html.theme-transitioning .theme-blur-overlay {
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  will-change: opacity;
-  animation: theme-blur 900ms ease forwards;
-}
-
-/*
-   Fast rise to full veil (~160ms) so the 220ms colour change is fully
-   masked, then a long ease-out decay for the ~1s premium feel. The
-   per-keyframe timing functions make the rise snappy and the fade silky.
-*/
-@keyframes theme-blur {
-  0% {
-    opacity: 0;
-    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  }
-  18% {
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.theme-transitioning .theme-blur-overlay {
-    animation: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    will-change: auto;
-  }
-}
-
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -355,7 +304,8 @@ html.theme-transitioning .theme-blur-overlay {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border-color: var(--vscode-border);
+  /* Components declare visible borders; avoid animating invisible ones. */
+  border-color: transparent;
 }
 
 html {
@@ -447,6 +397,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   height: 36px;
   flex-shrink: 0;
   padding: 0 12px;
@@ -495,6 +446,7 @@ svg {
 
 .titlebar__center {
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 8px;
   padding: 4px 16px;
@@ -526,6 +478,7 @@ svg {
 
 .titlebar__right {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 6px;
 }
@@ -1112,6 +1065,11 @@ svg {
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .theme-toggle:active {
   transform: translateY(0) scale(0.92);
 }
@@ -1626,7 +1584,7 @@ svg {
   box-shadow: var(--shadow-card);
   /* Reserve space before the image loads so nothing shifts. */
   isolation: isolate;
-  transition: var(--theme-transition), box-shadow 260ms ease, border-color 260ms ease;
+  transition: var(--theme-transition);
 }
 
 /* Restrained blue rim glow. Dark mode only, so light mode stays clean. */
@@ -3914,8 +3872,8 @@ svg {
 
 .cmd-category-tag--pages { border-color: rgba(56, 189, 248, 0.4); color: var(--sky-400); }
 .cmd-category-tag--projects { border-color: rgba(34, 197, 94, 0.4); color: var(--success); }
-.cmd-category-tag--skills { border-color: rgba(168, 85, 247, 0.4); color: #a855f7; }
-.cmd-category-tag--actions { border-color: rgba(251, 191, 36, 0.4); color: #fbbf24; }
+.cmd-category-tag--skills { border-color: rgba(168, 85, 247, 0.4); color: var(--purple); }
+.cmd-category-tag--actions { border-color: rgba(251, 191, 36, 0.4); color: var(--warning); }
 .cmd-category-tag--whatsnext { border-color: rgba(59, 130, 246, 0.4); color: var(--blue-400); background: var(--pill-bg); }
 
 .cmd-item__enter-hint {
@@ -4220,6 +4178,12 @@ svg {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
+@media (max-width: 639px) {
+  .titlebar__win-controls {
+    display: none;
+  }
+}
 
 @media (min-width: 640px) {
   .titlebar__menu {

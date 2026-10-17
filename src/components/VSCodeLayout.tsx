@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import portfolio from '@/data/portfolio.json'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { toggleTheme } from '@/hooks/useTheme'
 import { CommandPalette } from '@/components/CommandPalette'
 import { TerminalPanel } from '@/components/TerminalPanel'
 import { HtmlIcon, CssIcon, TailwindIcon, VscodeIcon } from './icons'
@@ -55,18 +56,6 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
       const remaining = openTabIds.filter((id) => id !== tabId)
       const fallbackTab = TABS.find((t) => remaining.includes(t.id))
       navigate(fallbackTab ? fallbackTab.path : '/')
-    }
-  }
-
-  const toggleTheme = () => {
-    const isDark = document.documentElement.getAttribute('data-theme') !== 'light'
-    const nextTheme = isDark ? 'light' : 'dark'
-    document.documentElement.setAttribute('data-theme', nextTheme)
-    document.documentElement.classList.toggle('dark', nextTheme === 'dark')
-    try {
-      localStorage.setItem('theme', nextTheme)
-    } catch {
-      /* storage unavailable */
     }
   }
 
