@@ -7,77 +7,109 @@ import portfolio from '@/data/portfolio.json'
 
 export default function ProjectDetail() {
   const { id } = useParams()
-  const project = portfolio.projects.find((p) => p.id === id)
+  const project = portfolio.projects.find((item) => item.id === id)
 
   useDocumentTitle(project ? `${project.name} — ${portfolio.hero.name}` : 'Not found')
 
   if (!project) return <NotFound />
 
-  return (
-    <div className="page page--compact">
-      {/* Back Link */}
-      <div>
-        <Link to="/projects" className="back-link">
-          <span>← All Projects</span>
-        </Link>
-      </div>
+  const currentIndex = portfolio.projects.findIndex((item) => item.id === project.id)
+  const nextProject =
+    portfolio.projects.length > 1
+      ? portfolio.projects[(currentIndex + 1) % portfolio.projects.length]
+      : null
 
-      {/* Header Banner */}
+  return (
+    <div className="container detail-page">
+      <Link to="/projects" className="back-link">
+        <span aria-hidden="true">←</span> All projects
+      </Link>
+
       <section className="detail-hero">
-        <div className="detail-hero__content">
-          <span className="detail-hero__period">{project.period} PROJECT</span>
+        <div className="detail-hero__copy">
+          <p className="eyebrow">{project.period} — Case study</p>
           <h1 className="detail-hero__title">{project.name}</h1>
           <p className="detail-hero__tagline">{project.tagline}</p>
 
           <div className="tech-row">
-            {project.tech.map((t) => (
-              <span key={t} className="tech-chip">
-                <TechIcon name={t} />
-                {t}
+            {project.tech.map((tech) => (
+              <span key={tech} className="chip">
+                <TechIcon name={tech} />
+                {tech}
               </span>
             ))}
           </div>
 
-          <div className="detail-hero__cta">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-github"
-            >
-              <span>View Source on GitHub</span>
-              <span>↗</span>
+          <div className="detail-hero__actions">
+            <a href={project.url} target="_blank" rel="noreferrer" className="btn btn--primary">
+              View source
+              <span className="btn__arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
+            <Link to="/projects" className="btn btn--ghost">
+              All projects
+            </Link>
           </div>
         </div>
 
-        <div className="detail-hero__thumb">
+        <div className="detail-hero__visual">
+          <div className="detail-hero__glow" aria-hidden="true" />
           <ProjectThumbnail id={project.id} />
         </div>
       </section>
 
-      {/* Overview & Key Highlights */}
-      <section className="detail-body">
-        <div className="detail-body__overview">
-          <div className="section-head">
-            <span className="section-head__bar" />
-            <h2 className="section-head__title section-head__title--md">Project Overview</h2>
+      <section className="detail-grid">
+        <article className="bento detail-card">
+          <p className="eyebrow">01 — Overview</p>
+          <h2 className="detail-card__title">About the project</h2>
+          <p className="detail-card__text">{project.description}</p>
+          <div className="detail-meta">
+            <div>
+              <span className="mono-label">Year</span>
+              <span className="detail-meta__value">{project.period}</span>
+            </div>
+            <div>
+              <span className="mono-label">Stack</span>
+              <span className="detail-meta__value">{project.tech.length} technologies</span>
+            </div>
+            <div>
+              <span className="mono-label">Source</span>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="detail-meta__link"
+              >
+                GitHub ↗
+              </a>
+            </div>
           </div>
-          <p>{project.description}</p>
-        </div>
+        </article>
 
-        <div className="detail-body__features">
-          <h3>Key Features & Implementation Points</h3>
-          <ul className="feature-grid">
-            {project.points.map((point, i) => (
+        <article className="bento detail-card">
+          <p className="eyebrow">02 — Highlights</p>
+          <h2 className="detail-card__title">What it does</h2>
+          <ul className="feature-list">
+            {project.points.map((point, index) => (
               <li key={point}>
-                <span className="num">{String(i + 1).padStart(2, '0')}</span>
+                <span className="feature-list__num">{String(index + 1).padStart(2, '0')}</span>
                 <span>{point}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </article>
       </section>
+
+      {nextProject && (
+        <Link to={`/projects/${nextProject.id}`} className="next-project">
+          <span className="eyebrow">Next project</span>
+          <span className="next-project__name">
+            {nextProject.name}
+            <span aria-hidden="true"> ↗</span>
+          </span>
+        </Link>
+      )}
     </div>
   )
 }

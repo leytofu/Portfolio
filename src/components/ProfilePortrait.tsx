@@ -17,8 +17,8 @@ interface ProfilePortraitProps {
  * - Falls back to a neutral SVG silhouette if the image is missing,
  *   so visitors never see a broken image.
  * - Renders a skeleton block before load to avoid layout shift.
- * - Styling lives in .profile-portrait (src/index.css) and uses the
- *   existing theme tokens, so it adapts to light/dark automatically.
+ * - Styling lives in .profile-portrait (src/index.css) and follows the
+ *   site's dark-first palette.
  */
 export function ProfilePortrait({ alt = 'Profile photo', initials }: ProfilePortraitProps) {
   const [status, setStatus] = useState<'loading' | 'ready' | 'missing'>('loading')
@@ -63,17 +63,17 @@ export function ProfilePortrait({ alt = 'Profile photo', initials }: ProfilePort
         >
           <defs>
             <linearGradient id="pp-bg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#111c33" />
-              <stop offset="100%" stopColor="#0a1122" />
+              <stop offset="0%" stopColor="#171222" />
+              <stop offset="100%" stopColor="#0a0a12" />
             </linearGradient>
             <linearGradient id="pp-rim" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+              <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
             </linearGradient>
           </defs>
           <rect width="400" height="400" fill="url(#pp-bg)" />
           <ellipse cx="200" cy="60" rx="220" ry="150" fill="url(#pp-rim)" />
-          <g fill="#1c2b47">
+          <g fill="#261d3b">
             <circle cx="200" cy="160" r="66" />
             <path d="M200 244c-58 0-104 33-104 74v42h208v-42c0-41-46-74-104-74z" />
           </g>
@@ -86,7 +86,7 @@ export function ProfilePortrait({ alt = 'Profile photo', initials }: ProfilePort
               fontFamily="'JetBrains Mono', monospace"
               fontSize="64"
               fontWeight="700"
-              fill="#3b82f6"
+              fill="#a78bfa"
               opacity="0.85"
             >
               {initials}

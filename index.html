@@ -1,25 +1,44 @@
 <!doctype html>
-<html lang="en" class="preload-no-transition">
+<html lang="en" class="dark preload-no-transition">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Staz Cid — Full Stack Developer portfolio. Projects, experience, and contact."
-    />
-    <title>Staz Cid — Portfolio</title>
+    <meta name="theme-color" content="#07070a" />
     <script>
-      ;(function () {
-        var theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+      ;(() => {
+        const root = document.documentElement
+        let theme = 'dark'
+
         try {
-          var stored = localStorage.getItem('theme')
-          if (stored === 'light' || stored === 'dark') theme = stored
-        } catch (e) {}
-        document.documentElement.setAttribute('data-theme', theme)
-        document.documentElement.classList.toggle('dark', theme === 'dark')
+          const stored = localStorage.getItem('theme')
+          if (stored === 'light' || stored === 'dark') {
+            theme = stored
+          } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light'
+          }
+        } catch {
+          if (window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light'
+        }
+
+        root.dataset.theme = theme
+        root.classList.toggle('dark', theme === 'dark')
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', theme === 'light' ? '#f4f1eb' : '#07070a')
       })()
     </script>
+    <meta
+      name="description"
+      content="Charlie Nozares — Full Stack Developer building modern web applications with Laravel, React, TypeScript, and AI."
+    />
+    <title>Charlie Nozares — Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>

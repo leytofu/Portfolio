@@ -1,28 +1,28 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-
-function getEditorScroller() {
-  return document.getElementById('editor-scroll-container')
-}
 
 export function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
-  useEffect(() => {
-    const scroller = getEditorScroller()
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+
     if (hash) {
-      const el = document.getElementById(hash.slice(1))
-      if (el && scroller) {
-        const top = el.offsetTop - 60
-        scroller.scrollTo({ top, behavior: 'smooth' })
+      const element = document.getElementById(hash.slice(1))
+      if (element) {
+        const top = element.getBoundingClientRect().top + window.scrollY - 80
+        window.scrollTo({ top, behavior: 'smooth' })
         return
       }
     }
-    if (scroller) {
-      scroller.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    }
+
+    const root = document.documentElement
+    const previousBehavior = root.style.scrollBehavior
+    root.style.scrollBehavior = 'auto'
+    window.scrollTo(0, 0)
+    root.style.scrollBehavior = previousBehavior
   }, [pathname, hash])
 
   return null

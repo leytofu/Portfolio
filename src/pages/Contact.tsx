@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
-import { PageHeader } from '@/components/PageHeader'
+import { PageIntro } from '@/components/PageIntro'
+import { Reveal } from '@/components/Reveal'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import portfolio from '@/data/portfolio.json'
 
@@ -26,11 +27,11 @@ export default function Contact() {
 
   function update<K extends keyof typeof form>(key: K, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }))
-    if (status === 'error') setStatus('idle')
+    if (status === 'error' || status === 'sent') setStatus('idle')
   }
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
     setTouched(true)
     if (!isValid || status === 'sending') {
       setStatus('error')
@@ -47,183 +48,214 @@ export default function Contact() {
     setStatus('sent')
   }
 
-  const fieldError = (valid: boolean) =>
-    touched && !valid ? ' contact-field__control--invalid' : ''
+  const fieldError = (valid: boolean) => (touched && !valid ? ' is-invalid' : '')
 
   return (
     <>
-      <PageHeader
-        label="GET IN TOUCH"
-        title="Let's build something"
+      <PageIntro
+        eyebrow="Get in touch"
+        title={
+          <>
+            Let&apos;s build
+            <br />
+            <span className="grad-text">something.</span>
+          </>
+        }
         description="Have a project in mind, a question, or want to collaborate? Drop a message or reach out through any channel below."
+        aside={
+          <div className="intro-meta">
+            <div className="intro-meta__row">
+              <span className="mono-label">Email</span>
+              <span className="intro-meta__truncate">{portfolio.hero.email}</span>
+            </div>
+            <div className="intro-meta__row">
+              <span className="mono-label">Response</span>
+              <span>Within 24 hours</span>
+            </div>
+            <div className="intro-meta__row">
+              <span className="mono-label">Status</span>
+              <span className="intro-meta__status">{portfolio.hero.status}</span>
+            </div>
+          </div>
+        }
       />
 
-      <div className="page page--compact contact-layout">
-        {/* ================= Contact Form ================= */}
-        <section className="contact-panel" aria-label="Contact form">
-          <div className="contact-panel__chrome" aria-hidden="true">
-            <span className="contact-panel__dot contact-panel__dot--r" />
-            <span className="contact-panel__dot contact-panel__dot--y" />
-            <span className="contact-panel__dot contact-panel__dot--g" />
-            <span className="contact-panel__filename">message.json</span>
-          </div>
-
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <div className="contact-form__row">
-              <label className="contact-field" htmlFor="c-name">
-                <span className="contact-field__label">
-                  name<span className="contact-field__req">*</span>
-                </span>
-                <input
-                  id="c-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  placeholder="yourname"
-                  value={form.name}
-                  onChange={(e) => update('name', e.target.value)}
-                  className={`contact-field__control${fieldError(nameValid)}`}
-                />
-              </label>
-
-              <label className="contact-field" htmlFor="c-email">
-                <span className="contact-field__label">
-                  email<span className="contact-field__req">*</span>
-                </span>
-                <input
-                  id="c-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="youremail@example.com"
-                  value={form.email}
-                  onChange={(e) => update('email', e.target.value)}
-                  className={`contact-field__control${fieldError(emailValid)}`}
-                />
-              </label>
-            </div>
-
-            <label className="contact-field" htmlFor="c-subject">
-              <span className="contact-field__label">subject</span>
-              <div className="contact-field__select">
-                <select
-                  id="c-subject"
-                  name="subject"
-                  value={form.subject}
-                  onChange={(e) => update('subject', e.target.value)}
-                  className="contact-field__control"
-                >
-                  {SUBJECTS.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
-                  ))}
-                </select>
-                <span className="contact-field__chevron" aria-hidden="true">
-                  ⌄
-                </span>
+      <section className="section section--tight container contact-layout">
+        <Reveal className="contact-form-wrap">
+          <section className="bento contact-card" aria-label="Contact form">
+            <div className="contact-card__head">
+              <div>
+                <p className="eyebrow">01 — Message</p>
+                <h2 className="bento__title">Tell me what you&apos;re working on.</h2>
               </div>
-            </label>
-
-            <label className="contact-field" htmlFor="c-message">
-              <span className="contact-field__label">
-                message<span className="contact-field__req">*</span>
+              <span className="chip chip--sm">
+                <span className="pulse-dot" aria-hidden="true" />
+                Available
               </span>
-              <textarea
-                id="c-message"
-                name="message"
-                rows={5}
-                placeholder="Tell me about your project, timeline, and goals…"
-                value={form.message}
-                onChange={(e) => update('message', e.target.value)}
-                className={`contact-field__control contact-field__control--area${fieldError(
-                  messageValid,
-                )}`}
-              />
-            </label>
-
-            <div className="contact-form__footer">
-              <button
-                type="submit"
-                disabled={status === 'sending' || status === 'sent'}
-                className={`contact-submit${status === 'sent' ? ' contact-submit--sent' : ''}`}
-              >
-                {status === 'sending'
-                  ? 'Opening mail client…'
-                  : status === 'sent'
-                    ? 'Draft ready ✓'
-                    : 'Send message →'}
-              </button>
-
-              <p className="contact-form__hint" role="status" aria-live="polite">
-                {status === 'error' && touched && !isValid
-                  ? 'Please complete the required fields with a valid email.'
-                  : status === 'sent'
-                    ? 'Your email client should open with a pre-filled draft.'
-                    : 'Sends via your default mail app — no data stored.'}
-              </p>
-            </div>
-          </form>
-        </section>
-
-        {/* ================= Sidebar ================= */}
-        <aside className="contact-aside">
-          {/* Direct email */}
-          <section className="contact-card">
-            <div className="contact-card__header">
-              <span className="contact-card__label">Direct Email</span>
-              <a href={`mailto:${portfolio.hero.email}`} className="contact-card__email">
-                {portfolio.hero.email}
-              </a>
             </div>
 
-            {/* Contact Table */}
-            <div className="contact-table">
-              {portfolio.contacts.map((contact) => (
-                <div key={contact.label} className="contact-row">
-                  <span className="contact-row__label">{contact.label}</span>
-                  <span className="contact-row__value">{contact.value}</span>
-                  {contact.url ? (
-                    <a
-                      href={contact.url}
-                      target={contact.url.startsWith('mailto:') ? undefined : '_blank'}
-                      rel="noreferrer"
-                      className="contact-row__link"
-                    >
-                      Connect ↗
-                    </a>
-                  ) : (
-                    <span className="contact-row__none">—</span>
-                  )}
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <div className="contact-form__row">
+                <label className="field" htmlFor="c-name">
+                  <span className="field__label">
+                    Name<span className="field__req">*</span>
+                  </span>
+                  <input
+                    id="c-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Your name"
+                    value={form.name}
+                    onChange={(event) => update('name', event.target.value)}
+                    className={`field__control${fieldError(nameValid)}`}
+                  />
+                </label>
+
+                <label className="field" htmlFor="c-email">
+                  <span className="field__label">
+                    Email<span className="field__req">*</span>
+                  </span>
+                  <input
+                    id="c-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    value={form.email}
+                    onChange={(event) => update('email', event.target.value)}
+                    className={`field__control${fieldError(emailValid)}`}
+                  />
+                </label>
+              </div>
+
+              <label className="field" htmlFor="c-subject">
+                <span className="field__label">Subject</span>
+                <div className="field__select-wrap">
+                  <select
+                    id="c-subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={(event) => update('subject', event.target.value)}
+                    className="field__control field__control--select"
+                  >
+                    {SUBJECTS.map((subject) => (
+                      <option key={subject} value={subject}>
+                        {subject}
+                      </option>
+                    ))}
+                  </select>
+                  <svg
+                    className="field__chevron"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
                 </div>
-              ))}
-            </div>
-          </section>
+              </label>
 
-          {/* Elsewhere Social Badges */}
-          <section className="contact-socials">
-            <div className="section-head">
-              <span className="section-head__bar" />
-              <h2 className="section-head__title section-head__title--md">Social Profiles</h2>
-            </div>
+              <label className="field" htmlFor="c-message">
+                <span className="field__label">
+                  Message<span className="field__req">*</span>
+                </span>
+                <textarea
+                  id="c-message"
+                  name="message"
+                  rows={6}
+                  placeholder="Tell me about your project, timeline, and goals…"
+                  value={form.message}
+                  onChange={(event) => update('message', event.target.value)}
+                  className={`field__control field__control--area${fieldError(messageValid)}`}
+                />
+              </label>
 
-            <div className="socials-row">
-              {portfolio.socialMedia.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-chip"
+              <div className="contact-form__footer">
+                <button
+                  type="submit"
+                  disabled={status === 'sending' || status === 'sent'}
+                  className={`btn btn--primary${status === 'sent' ? ' is-sent' : ''}`}
                 >
-                  <span className="social-chip__label">{social.label}</span>
-                  <span className="social-chip__handle">{social.username}</span>
-                </a>
-              ))}
-            </div>
+                  {status === 'sending'
+                    ? 'Opening mail client…'
+                    : status === 'sent'
+                      ? 'Draft ready ✓'
+                      : 'Send message'}
+                  {status === 'idle' && (
+                    <span className="btn__arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  )}
+                </button>
+
+                <p className="contact-form__hint" role="status" aria-live="polite">
+                  {status === 'error' && touched && !isValid
+                    ? 'Please complete the required fields with a valid email.'
+                    : status === 'sent'
+                      ? 'Your email client should open with a pre-filled draft.'
+                      : 'Opens your mail app — no data is stored.'}
+                </p>
+              </div>
+            </form>
           </section>
+        </Reveal>
+
+        <aside className="contact-aside">
+          <Reveal>
+            <article className="bento contact-email-card">
+              <p className="eyebrow">Direct email</p>
+              <a href={`mailto:${portfolio.hero.email}`} className="contact-email">
+                {portfolio.hero.email}
+                <span aria-hidden="true">↗</span>
+              </a>
+              <p className="bento__text">
+                The fastest way to reach me. I usually reply within a day.
+              </p>
+            </article>
+          </Reveal>
+
+          <Reveal delay={0.06}>
+            <article className="bento contact-links-card">
+              <p className="eyebrow">Elsewhere</p>
+              <ul className="contact-links">
+                {portfolio.socialMedia.map((social) => {
+                  const external = !social.url.startsWith('mailto:')
+                  return (
+                    <li key={social.label}>
+                      <a
+                        href={social.url}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noreferrer' : undefined}
+                      >
+                        <span className="contact-links__label">{social.label}</span>
+                        <span className="contact-links__value">{social.username}</span>
+                        <span className="contact-links__arrow" aria-hidden="true">
+                          ↗
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </article>
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <article className="bento contact-note">
+              <span className="pulse-dot" aria-hidden="true" />
+              <div>
+                <p className="contact-note__title">{portfolio.hero.status}</p>
+                <p className="contact-note__text">
+                  Based in the Philippines · Open to internships, junior roles, and collaborations.
+                </p>
+              </div>
+            </article>
+          </Reveal>
         </aside>
-      </div>
+      </section>
     </>
   )
 }

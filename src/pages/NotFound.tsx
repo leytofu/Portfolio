@@ -5,15 +5,23 @@ export function NotFound() {
   useDocumentTitle('404 — Not found')
 
   return (
-    <section className="notfound">
-      <span className="notfound__code">Error 404</span>
-      <h1 className="notfound__title">Page not found</h1>
-      <p className="notfound__desc">
-        The page you're looking for doesn't exist or has been moved.
-      </p>
-      <Link to="/" className="notfound__btn">
-        <span>← Back home</span>
-      </Link>
+    <section className="notfound container">
+      <div className="notfound__inner">
+        <p className="eyebrow">Error 404</p>
+        <p className="notfound__code grad-text" aria-hidden="true">
+          404
+        </p>
+        <h1 className="notfound__title">Page not found</h1>
+        <p className="notfound__desc">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+        </p>
+        <Link to="/" className="btn btn--primary">
+          Back home
+          <span className="btn__arrow" aria-hidden="true">
+            ↗
+          </span>
+        </Link>
+      </div>
     </section>
   )
 }

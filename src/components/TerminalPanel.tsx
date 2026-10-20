@@ -7,6 +7,7 @@ interface OutputLine {
   id: string
   type: 'prompt' | 'text' | 'error' | 'success' | 'info'
   content: string
+  reveal?: boolean
 }
 
 interface TerminalPanelProps {
@@ -15,9 +16,12 @@ interface TerminalPanelProps {
   onToggleTheme?: () => void
 }
 
+const WHOAMI_OUTPUT = `${portfolio.hero.name} — ${portfolio.hero.role}\n${portfolio.hero.bio}\nLocation: ${portfolio.hero.location} | Status: ${portfolio.hero.status}`
+
 export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelProps) {
   const [activeTab, setActiveTab] = useState<'terminal' | 'problems' | 'output' | 'debug'>('terminal')
-  const [inputVal, setInputVal] = useState('whoami')
+  const [inputVal, setInputVal] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
   const [history, setHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
@@ -37,12 +41,62 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
+  const introPlayedRef = useRef(false)
 
   useEffect(() => {
     if (isOpen && activeTab === 'terminal') {
       setTimeout(() => inputRef.current?.focus(), 50)
     }
   }, [isOpen, activeTab])
+
+  // The first time the panel opens, type `whoami` and print its result
+  // automatically. It only runs once so reopening keeps the user's history.
+  useEffect(() => {
+    if (!isOpen || introPlayedRef.current) return
+
+    const command = 'whoami'
+    const timers: number[] = []
+    let cancelled = false
+
+    const schedule = (fn: () => void, delay: number) => {
+      timers.push(window.setTimeout(fn, delay))
+    }
+
+    setInputVal('')
+    setIsTyping(true)
+
+    const typeCommand = (index: number) => {
+      if (cancelled) return
+      setInputVal(command.slice(0, index))
+
+      if (index < command.length) {
+        schedule(() => typeCommand(index + 1), 95)
+        return
+      }
+
+      // "Press Enter": echo the command and reveal the output.
+      schedule(() => {
+        if (cancelled) return
+        setLines((prev) => [
+          ...prev,
+          { id: 'intro-cmd', type: 'prompt', content: `$ ${command}` },
+          { id: 'intro-out', type: 'success', content: WHOAMI_OUTPUT, reveal: true },
+        ])
+        setInputVal('')
+        setIsTyping(false)
+        introPlayedRef.current = true
+      }, 360)
+    }
+
+    schedule(() => typeCommand(1), 320)
+
+    return () => {
+      cancelled = true
+      timers.forEach((timer) => window.clearTimeout(timer))
+      setInputVal('')
+      setIsTyping(false)
+    }
+  }, [isOpen])
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -98,7 +152,7 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
         newLines.push({
           id: `out-${Date.now()}`,
           type: 'success',
-          content: `${portfolio.hero.name} — ${portfolio.hero.role}\n${portfolio.hero.bio}\nLocation: ${portfolio.hero.location} | Status: ${portfolio.hero.status}`,
+          content: WHOAMI_OUTPUT,
         })
         break
 
@@ -231,6 +285,8 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isTyping) return
+
     if (e.key === 'Enter') {
       e.preventDefault()
       executeCommand(inputVal)
@@ -360,7 +416,10 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
         {activeTab === 'terminal' && (
           <div className="term-lines">
             {lines.map((line) => (
-              <div key={line.id} className={`term-line term-line--${line.type}`}>
+              <div
+                key={line.id}
+                className={`term-line term-line--${line.type}${line.reveal ? ' term-line--reveal' : ''}`}
+              >
                 {line.type === 'prompt' ? (
                   <span className="term-prompt">{line.content}</span>
                 ) : (
@@ -375,10 +434,13 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
               <input
                 ref={inputRef}
                 type="text"
-                className="term-input"
+                className={`term-input${isTyping ? ' term-input--typing' : ''}`}
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onKeyDown={handleKeyDown}
+                readOnly={isTyping}
+                aria-busy={isTyping}
+                aria-label="Terminal command input"
                 spellCheck={false}
                 autoComplete="off"
               />

@@ -3,7 +3,7 @@
     "name": "Charlie Nozares Boyles",
     "firstName": "Charlie",
     "lastName": "Nozares",
-    "role": "Full Stack Developer",
+    "role": "Software Engineer",
     "bio": "I build modern web applications using Laravel, React, TypeScript and more. I love turning ideas into real projects and solving problems with code.",
     "about": "I'm a 4th year IT college student with a passion for web development and technology. I enjoy learning new tools, building useful projects, and continuously improving my skills. My goal is to become a full stack developer and create solutions that make a positive impact.",
     "school": "TMC IT Student (SY 2023 – 2027)",
@@ -17,7 +17,6 @@
     { "id": "about", "label": "About", "url": "/about" },
     { "id": "projects", "label": "Projects", "url": "/projects" },
     { "id": "skills", "label": "Skills", "url": "/skills" },
-    { "id": "resume", "label": "Resume", "url": "/resume" },
     { "id": "contact", "label": "Contact", "url": "/contact" }
   ],
   "stats": [
@@ -26,8 +25,8 @@
     { "value": "4th", "label": "Year IT Student" }
   ],
   "featured": [
-    "food-reservation",
-    "islasafe",
+    "laravel-food-reservation",
+    "islasafe-emergency",
     "tmc-llm-local"
   ],
   "projects": [
@@ -129,7 +128,7 @@
     { "name": "VS Code", "color": "#007acc", "type": "tool" }
   ],
   "contacts": [
-    { "label": "Email", "value": "leychaputhboyles@gmail.com", "url": "mailto:leychaputhboyles@gmail.com" },
+    { "label": "Email", "value": "leycharputhboyles@gmail.com", "url": "mailto:leycharputhboyles@gmail.com" },
     { "label": "GitHub", "value": "github.com/leytofu", "url": "https://github.com/leytofu" },
     { "label": "LinkedIn", "value": "linkedin.com/in/charlie-nozares", "url": "https://linkedin.com" },
     { "label": "Location", "value": "Philippines", "url": "" }
@@ -137,7 +136,7 @@
   "socialMedia": [
     { "label": "GitHub", "username": "@leytofu", "url": "https://github.com/leytofu" },
     { "label": "LinkedIn", "username": "charlie", "url": "https://linkedin.com" },
-    { "label": "Email", "username": "leychaputhboyles@gmail.com", "url": "mailto:leychaputhboyles@gmail.com" }
+    { "label": "Email", "username": "leycharputhboyles@gmail.com", "url": "mailto:leycharputhboyles@gmail.com" }
   ],
   "footer": [
     { "label": "Home", "url": "/" },

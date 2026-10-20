@@ -115,7 +115,12 @@ export function ProjectThumbnail({ id, className = '' }: { id: string; className
   if (id === 'laravel-food-reservation') {
     return (
       <div className={`project-card__thumb ${className} project-card__thumb--1`}>
-        <svg viewBox="0 0 480 270" fill="none" className="project-card__thumb-svg">
+        <svg
+          viewBox="0 0 480 270"
+          fill="none"
+          preserveAspectRatio="xMidYMid slice"
+          className="project-card__thumb-svg"
+        >
           <defs>
             <linearGradient id="foodBg" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#1a120c" />
@@ -157,7 +162,12 @@ export function ProjectThumbnail({ id, className = '' }: { id: string; className
   if (id === 'islasafe-emergency') {
     return (
       <div className={`project-card__thumb ${className} project-card__thumb--2`}>
-        <svg viewBox="0 0 480 270" fill="none" className="project-card__thumb-svg">
+        <svg
+          viewBox="0 0 480 270"
+          fill="none"
+          preserveAspectRatio="xMidYMid slice"
+          className="project-card__thumb-svg"
+        >
           <defs>
             <linearGradient id="oceanBg" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#041527" />
@@ -223,7 +233,12 @@ export function ProjectThumbnail({ id, className = '' }: { id: string; className
   // TMC-LLM Local AI Model default
   return (
     <div className={`project-card__thumb ${className} project-card__thumb--3`}>
-      <svg viewBox="0 0 480 270" fill="none" className="project-card__thumb-svg">
+      <svg
+          viewBox="0 0 480 270"
+          fill="none"
+          preserveAspectRatio="xMidYMid slice"
+          className="project-card__thumb-svg"
+        >
         <defs>
           <linearGradient id="aiBg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#080c16" />

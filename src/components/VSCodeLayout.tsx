@@ -6,7 +6,6 @@ import { toggleTheme } from '@/hooks/useTheme'
 import { CommandPalette } from '@/components/CommandPalette'
 import { TerminalPanel } from '@/components/TerminalPanel'
 import { HtmlIcon, CssIcon, TailwindIcon, VscodeIcon } from './icons'
-import { useResumeAvailable } from '@/hooks/useResumeAvailable'
 
 interface TabItem {
   id: string
@@ -19,22 +18,19 @@ const TABS: TabItem[] = [
   { id: 'about', label: 'about.html', path: '/about' },
   { id: 'projects', label: 'projects.html', path: '/projects' },
   { id: 'skills', label: 'skills.html', path: '/skills' },
-  { id: 'resume', label: 'resume.html', path: '/resume' },
   { id: 'contact', label: 'contact.html', path: '/contact' },
 ]
 
 export function VSCodeLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation()
   const navigate = useNavigate()
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 768)
   const [activeActivity, setActiveActivity] = useState<'explorer' | 'search' | 'git' | 'settings'>('explorer')
   const [closedTabIds, setClosedTabIds] = useState<string[]>([])
   const [showReadmeModal, setShowReadmeModal] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [terminalOpen, setTerminalOpen] = useState(false)
-  const resumeStatus = useResumeAvailable()
-  const resumeReady = resumeStatus === 'ready'
 
   // Find active tab from current pathname
   const currentTab = TABS.find((t) => {
@@ -97,9 +93,6 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
       case 'Toggle Theme':
         toggleTheme()
         break
-      case 'Download CV':
-        window.location.href = `mailto:${portfolio.hero.email}?subject=CV Request`
-        break
       case 'README':
         setShowReadmeModal(true)
         break
@@ -145,13 +138,8 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
                 <button onClick={() => handleMenuAction('File', 'Projects')}>Open Projects Page</button>
                 <button onClick={() => handleMenuAction('File', 'Skills')}>Open Skills Page</button>
                 <button onClick={() => handleMenuAction('File', 'Contact')}>Open Contact Page</button>
-                <hr />
-                <button onClick={() => handleMenuAction('File', 'Download CV')}>Download CV / Resume</button>
               </div>
             </div>
-
-            <button type="button" className="titlebar__menu-item">Edit</button>
-            <button type="button" className="titlebar__menu-item">Selection</button>
 
             {/* View Menu */}
             <div className="menu-dropdown">
@@ -162,9 +150,6 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
                 <button onClick={() => handleMenuAction('View', 'Toggle Theme')}>Toggle Color Theme</button>
               </div>
             </div>
-
-            <button type="button" className="titlebar__menu-item">Go</button>
-            <button type="button" className="titlebar__menu-item">Run</button>
 
             {/* Terminal Menu */}
             <div className="menu-dropdown">
@@ -197,7 +182,7 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
           </svg>
-          <span>Search files, projects, skills, or type a command…</span>
+          <span>Search or run a command…</span>
           <span className="cmd-ctrl-tag">Ctrl+P</span>
         </button>
 
@@ -215,11 +200,6 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
               <path d="M9 3v18" />
             </svg>
           </button>
-          <div className="titlebar__win-controls">
-            <button type="button" className="titlebar__win-control">─</button>
-            <button type="button" className="titlebar__win-control">▢</button>
-            <button type="button" className="titlebar__win-control titlebar__win-control--close">✕</button>
-          </div>
         </div>
       </header>
 
@@ -484,17 +464,8 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
               })}
             </nav>
 
-            {/* Download CV + Theme Switcher + Hamburger */}
+            {/* Terminal toggle + Theme Switcher + Hamburger */}
             <div className="inner-nav__actions">
-              <Link to="/resume" className={`btn-cv ${resumeReady ? '' : 'btn-cv--ghost'}`}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Download CV</span>
-              </Link>
-
               <button
                 type="button"
                 onClick={() => setTerminalOpen(!terminalOpen)}
@@ -562,11 +533,7 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
             </svg>
             <span>main*</span>
           </a>
-          <span className="statusbar__sep">|</span>
-          <div className="statusbar__problems">
-            <span>⊗ 0</span>
-            <span>⚠ 0</span>
-          </div>
+          <span className="statusbar__sep">·</span>
 
           {/* Quick Terminal Trigger */}
           <button
@@ -583,21 +550,14 @@ export function VSCodeLayout({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        {/* Center Tagline */}
+        {/* Center */}
         <div className="statusbar__center">
-          <span>© 2025 {portfolio.hero.name}. All rights reserved.</span>
-          <span className="statusbar__sep">•</span>
-          <span className="tagline">Code • Build • Improve</span>
+          <span>© {new Date().getFullYear()} {portfolio.hero.name}</span>
         </div>
 
-        {/* Right Line Specs */}
+        {/* Right */}
         <div className="statusbar__right">
-          <span>✓✓Prettier</span>
-          <span className="spaces">⏱︎Today: 1h 7m</span>
-          <span>UTF-8</span>
-          <span>LF</span>
           <span className="lang">HTML</span>
-          <span className="bell">🔔</span>
         </div>
       </footer>
 

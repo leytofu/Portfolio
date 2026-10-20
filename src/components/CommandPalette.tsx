@@ -171,18 +171,6 @@ export function CommandPalette({
       },
     })
 
-    items.push({
-      id: 'action-cv',
-      title: 'Action: Download CV / Resume',
-      subtitle: `Email ${portfolio.hero.name} at ${portfolio.hero.email}`,
-      category: 'Actions',
-      icon: 'action',
-      action: () => {
-        window.location.href = `mailto:${portfolio.hero.email}?subject=CV Request`
-        onClose()
-      },
-    })
-
     return items
   }, [navigate, onClose, onToggleTerminal, onToggleTheme, onOpenReadme])
 
