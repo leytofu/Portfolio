@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /** Where the portrait lives. Drop your photo at public/images/mypfp.jpg */
-export const PROFILE_PATH = '/images/mypfp.jpg'
+export const PROFILE_PATH = `${import.meta.env.BASE_URL}images/mypfp.jpg`
 
 interface ProfilePortraitProps {
   /** Alt text; defaults to the site owner's name. */

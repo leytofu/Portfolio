@@ -21,7 +21,9 @@ function shouldPlayIntro() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
 
   const forced = new URLSearchParams(window.location.search).get('intro') === '1'
-  if (!forced && window.location.pathname !== '/') return false
+  const pathname = window.location.pathname.replace(/\/+$/, '')
+  const homePath = import.meta.env.BASE_URL.replace(/\/+$/, '')
+  if (!forced && pathname !== homePath) return false
 
   try {
     if (!forced && sessionStorage.getItem(INTRO_KEY) === '1') return false
@@ -136,7 +138,7 @@ function Shell() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Shell />
     </BrowserRouter>
   )
