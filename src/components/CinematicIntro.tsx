@@ -229,7 +229,6 @@ export function CinematicIntro({ onFinish }: { onFinish: () => void }) {
         
         <div className="intro__load">
           <IntroCounter />
-          <span className="intro__load-label">Loading experience</span>
         </div>
         
         <div className="intro__progress" aria-hidden="true">

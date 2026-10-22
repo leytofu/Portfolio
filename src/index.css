@@ -3223,10 +3223,6 @@ ol {
   letter-spacing: 0.06em;
 }
 
-.intro__load-label {
-  color: var(--faint);
-}
-
 .intro__progress {
   height: 1px;
   flex: 1;
@@ -3342,12 +3338,6 @@ ol {
   .intro__eyebrow {
     font-size: 10px;
     letter-spacing: 0.18em;
-  }
-}
-
-@media (max-width: 360px) {
-  .intro__load-label {
-    display: none;
   }
 }
 
