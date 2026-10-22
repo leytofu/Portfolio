@@ -270,10 +270,10 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1792499743.925239,
-    "seen": 1792662167.7728667,
-    "ast_hash": "203594ed225ea37caeac34f860f54e38",
-    "semantic_hash": "203594ed225ea37caeac34f860f54e38"
+    "mtime": 1792680787.5605545,
+    "seen": 1792680964.9407516,
+    "ast_hash": "6d5ae37dd0bff1c34e1a9b1ed99599b4",
+    "semantic_hash": ""
   },
   "public/images/README.md": {
     "mtime": 1791799975.1851609,
@@ -306,9 +306,9 @@
     "semantic_hash": "1a1898ec6e1c6aa9b5cb168537c4db54"
   },
   "tests/contact.test.mjs": {
-    "mtime": 1792679213.5022469,
-    "seen": 1792679250.708722,
-    "ast_hash": "fc98a6cdd825c6faddee9a0180038225",
+    "mtime": 1792680943.0989351,
+    "seen": 1792680964.9407516,
+    "ast_hash": "6447d51c3ac33a5d5f84ed33b6fd3d56",
     "semantic_hash": ""
   },
   "vercel.json": {
@@ -324,9 +324,21 @@
     "semantic_hash": ""
   },
   "src/api/contact.ts": {
-    "mtime": 1792679213.497175,
-    "seen": 1792679250.708722,
-    "ast_hash": "b5cf9d599a6e2816f61df97d7b5faa98",
+    "mtime": 1792680938.3629527,
+    "seen": 1792680964.9407516,
+    "ast_hash": "a9ff79184c5fa4085d8ff09f2b3eddd5",
+    "semantic_hash": ""
+  },
+  "public/images/picko-icon.svg": {
+    "mtime": 1792680787.5595534,
+    "seen": 1792680964.9407516,
+    "ast_hash": "97ad25c87db57d57926c8099986b0493",
+    "semantic_hash": ""
+  },
+  "public/images/picko.jpg": {
+    "mtime": 1792469906.7466486,
+    "seen": 1792680964.9407516,
+    "ast_hash": "38db4dfa32924a34e2924c8d9b23a2cc",
     "semantic_hash": ""
   }
 }

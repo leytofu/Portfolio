@@ -246,9 +246,9 @@
     "semantic_hash": "a3d39fa780ebff65444de257f291ce6c"
   },
   "tsconfig.node.json": {
-    "mtime": 1792679023.2288737,
-    "seen": 1792679043.0989952,
-    "ast_hash": "b4ec99fae59b46dba187ea44903c3904",
+    "mtime": 1792679213.499534,
+    "seen": 1792679250.708722,
+    "ast_hash": "0da3b547c2e365323c05037d9940f435",
     "semantic_hash": ""
   },
   "vite.config.ts": {
@@ -264,9 +264,9 @@
     "semantic_hash": "6989d825a7514acd671d290701f284dc"
   },
   "README.md": {
-    "mtime": 1792679023.2320397,
-    "seen": 1792679043.0989952,
-    "ast_hash": "901645d1439ce0070073f8e7cf442744",
+    "mtime": 1792679247.3981304,
+    "seen": 1792679250.708722,
+    "ast_hash": "2e65950e5656f0f7955f11c5c6d4946d",
     "semantic_hash": ""
   },
   "index.html": {
@@ -305,22 +305,16 @@
     "ast_hash": "1a1898ec6e1c6aa9b5cb168537c4db54",
     "semantic_hash": "1a1898ec6e1c6aa9b5cb168537c4db54"
   },
-  "api/contact.ts": {
-    "mtime": 1792679023.2288737,
-    "seen": 1792679043.0989952,
-    "ast_hash": "2db6b66e023e17ef89a58a7387f9216e",
-    "semantic_hash": ""
-  },
   "tests/contact.test.mjs": {
-    "mtime": 1792679023.231027,
-    "seen": 1792679043.0989952,
-    "ast_hash": "e16037d5a1405da02c065532f4f079be",
+    "mtime": 1792679213.5022469,
+    "seen": 1792679250.708722,
+    "ast_hash": "fc98a6cdd825c6faddee9a0180038225",
     "semantic_hash": ""
   },
   "vercel.json": {
-    "mtime": 1792678595.112445,
-    "seen": 1792678660.523712,
-    "ast_hash": "52465c94e8e7abddc5966783255ea5cb",
+    "mtime": 1792679213.498696,
+    "seen": 1792679250.708722,
+    "ast_hash": "5113a634ba950d70c5bec774e9dabae9",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -330,9 +324,9 @@
     "semantic_hash": ""
   },
   "src/api/contact.ts": {
-    "mtime": 1792679023.1966875,
-    "seen": 1792679043.0989952,
-    "ast_hash": "99cbced9ee844da388bd70ad34c32452",
+    "mtime": 1792679213.497175,
+    "seen": 1792679250.708722,
+    "ast_hash": "b5cf9d599a6e2816f61df97d7b5faa98",
     "semantic_hash": ""
   }
 }

@@ -1,12 +1,12 @@
 # Graph Report - Portfolio  (2026-10-22)
 
 ## Corpus Check
-- 51 files · ~103,067 words
+- 50 files · ~103,185 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
 ## Summary
-- 286 nodes · 530 edges · 19 communities (13 shown, 6 thin omitted)
+- 288 nodes · 531 edges · 19 communities (14 shown, 5 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -67,7 +67,7 @@
 - **Dark Developer-Focused Visual Language (theme script, VS Code framing, blue-accent assets)** — index_theme_bootstrap_script, index_typography_stack, public_favicon_brand_glyph, ref_vs_code_portfolio_dashboard_design_reference, ref_vs_code_portfolio_dashboard_vscode_frame_chrome, ref_vs_code_portfolio_dashboard_dark_blue_aesthetic [INFERRED 0.75]
 - **Hero Portrait Asset Pipeline (docs, PROFILE_PATH, placeholder SVG, actual photo)** — public_images_readme_profile_portrait_setup, public_images_readme_profile_path_constant, public_images_readme_silhouette_fallback, public_images_profile_svg_placeholder, public_images_mypfp_portrait_photo [INFERRED 0.85]
 
-## Communities (19 total, 6 thin omitted)
+## Communities (19 total, 5 thin omitted)
 
 ### Community 0 - "Shared UI Building Blocks"
 Cohesion: 0.11
@@ -114,29 +114,33 @@ Cohesion: 0.33
 Nodes (5): plugins, rules, react/only-export-components, react/rules-of-hooks, $schema
 
 ### Community 16 - "contact.test.mjs"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (5): fetch(), json(), SUBJECTS, originalEnv, valid
 
 ### Community 17 - "Claude Code Project Instructions"
 Cohesion: 0.33
 Nodes (5): Claude Code Project Instructions, Development Workflow, Graphify, Obsidian Knowledge Base, Token Efficiency
 
+### Community 18 - "vercel.json"
+Cohesion: 0.50
+Nodes (3): builds, routes, $schema
+
 ## Knowledge Gaps
 - **5 isolated node(s):** `@types/node`, `@types/react`, `@types/react-dom`, `oxlint`, `typescript`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 133 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 135 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `react` connect `App Shell and Navigation` to `Shared UI Building Blocks`, `NPM Dependency Manifest`, `CinematicIntro.tsx`, `Tech Stack Icon Library`?**
-  _High betweenness centrality (0.130) - this node is a cross-community bridge._
+  _High betweenness centrality (0.129) - this node is a cross-community bridge._
 - **What connects `@types/node`, `@types/react`, `@types/react-dom` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Shared UI Building Blocks` be split into smaller, more focused modules?**
   _Cohesion score 0.10964912280701754 - nodes in this community are weakly interconnected._
 - **Why does `react-router-dom` connect `Shared UI Building Blocks` to `App Shell and Navigation`, `NPM Dependency Manifest`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `App Shell and Navigation` be split into smaller, more focused modules?**
   _Cohesion score 0.11261261261261261 - nodes in this community are weakly interconnected._
 - **Should `NPM Dependency Manifest` be split into smaller, more focused modules?**

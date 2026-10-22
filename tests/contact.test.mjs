@@ -1,10 +1,24 @@
 import assert from 'node:assert/strict'
 import { afterEach, test } from 'node:test'
 import { existsSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import contact from '../src/api/contact.ts'
+import ts from 'typescript'
 
 const originalFetch = globalThis.fetch
 const originalEnv = { ...process.env }
+test('API typechecks independently without automatic Node global types', () => {
+  const file = new URL('../src/api/contact.ts', import.meta.url)
+  const program = ts.createProgram([fileURLToPath(file)], {
+    noEmit: true,
+    target: ts.ScriptTarget.ES2023,
+    module: ts.ModuleKind.NodeNext,
+    types: [],
+    skipLibCheck: true,
+  })
+  const diagnostics = ts.getPreEmitDiagnostics(program)
+  assert.deepEqual(diagnostics.map((item) => ts.flattenDiagnosticMessageText(item.messageText, '\n')), [])
+})
 test('Vercel builds the src handler and routes API before the SPA fallback', () => {
   const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'))
   assert.equal(existsSync(new URL('../api', import.meta.url)), false)

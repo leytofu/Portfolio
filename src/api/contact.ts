@@ -1,4 +1,8 @@
+/// <reference types="node" />
 // Server-only handler; vercel.json builds and routes this file directly.
+import { Buffer } from 'node:buffer'
+import process from 'node:process'
+
 const SUBJECTS = ['Project Inquiry', 'Collaboration', 'Job Opportunity', 'Just Saying Hi']
 const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/
 
