@@ -1,8 +1,15 @@
 {
-  "rewrites": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
+    { "src": "src/api/contact.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/contact/?", "dest": "/src/api/contact.ts" },
+    { "handle": "filesystem" },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/((?!api(?:/|$)).*)",
+      "dest": "/index.html"
     }
   ]
 }

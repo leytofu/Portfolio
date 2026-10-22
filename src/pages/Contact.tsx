@@ -13,16 +13,18 @@ export default function Contact() {
 
   const [status, setStatus] = useState<FormStatus>('idle')
   const [touched, setTouched] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({
     name: '',
     email: '',
     subject: SUBJECTS[0] as string,
     message: '',
+    website: '',
   })
 
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
-  const nameValid = form.name.trim().length > 1
-  const messageValid = form.message.trim().length > 4
+  const emailValid = form.email.trim().length <= 254 && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(form.email.trim())
+  const nameValid = form.name.trim().length > 1 && form.name.trim().length <= 100 && !/[\r\n]/.test(form.name)
+  const messageValid = form.message.trim().length > 4 && form.message.trim().length <= 5000
   const isValid = nameValid && emailValid && messageValid
 
   function update<K extends keyof typeof form>(key: K, value: string) {
@@ -30,22 +32,37 @@ export default function Contact() {
     if (status === 'error' || status === 'sent') setStatus('idle')
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    if (status === 'sending') return
     setTouched(true)
-    if (!isValid || status === 'sending') {
+    setError('')
+    if (!isValid) {
       setStatus('error')
       return
     }
     setStatus('sending')
 
-    const body = `${form.message}\n\n— ${form.name} (${form.email})`
-    const mailto = `mailto:${portfolio.hero.email}?subject=${encodeURIComponent(
-      `[${form.subject}] ${form.name}`,
-    )}&body=${encodeURIComponent(body)}`
-
-    window.location.href = mailto
-    setStatus('sent')
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+        signal: AbortSignal.timeout(20_000),
+      })
+      const result = await response.json().catch(() => null)
+      if (!response.ok || result?.success !== true) {
+        throw new Error(typeof result?.error === 'string' ? result.error : 'Could not send your message. Please try again or use the direct email link.')
+      }
+      setStatus('sent')
+      setTouched(false)
+      setForm({ name: '', email: '', subject: SUBJECTS[0], message: '', website: '' })
+    } catch (cause) {
+      setStatus('error')
+      setError(cause instanceof Error && cause.name !== 'TimeoutError'
+        ? cause.message
+        : 'The request timed out. Please try again later or use the direct email link.')
+    }
   }
 
   const fieldError = (valid: boolean) => (touched && !valid ? ' is-invalid' : '')
@@ -95,110 +112,128 @@ export default function Contact() {
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
-              <div className="contact-form__row">
-                <label className="field" htmlFor="c-name">
-                  <span className="field__label">
-                    Name<span className="field__req">*</span>
-                  </span>
-                  <input
-                    id="c-name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    placeholder="Your name"
-                    value={form.name}
-                    onChange={(event) => update('name', event.target.value)}
-                    className={`field__control${fieldError(nameValid)}`}
-                  />
-                </label>
-
-                <label className="field" htmlFor="c-email">
-                  <span className="field__label">
-                    Email<span className="field__req">*</span>
-                  </span>
-                  <input
-                    id="c-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    placeholder="you@example.com"
-                    value={form.email}
-                    onChange={(event) => update('email', event.target.value)}
-                    className={`field__control${fieldError(emailValid)}`}
-                  />
-                </label>
+              <div hidden aria-hidden="true">
+                <label htmlFor="c-website">Website</label>
+                <input id="c-website" name="website" tabIndex={-1} autoComplete="off"
+                  value={form.website} onChange={(event) => update('website', event.target.value)} />
               </div>
-
-              <label className="field" htmlFor="c-subject">
-                <span className="field__label">Subject</span>
-                <div className="field__select-wrap">
-                  <select
-                    id="c-subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={(event) => update('subject', event.target.value)}
-                    className="field__control field__control--select"
-                  >
-                    {SUBJECTS.map((subject) => (
-                      <option key={subject} value={subject}>
-                        {subject}
-                      </option>
-                    ))}
-                  </select>
-                  <svg
-                    className="field__chevron"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    aria-hidden="true"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </div>
-              </label>
-
-              <label className="field" htmlFor="c-message">
-                <span className="field__label">
-                  Message<span className="field__req">*</span>
-                </span>
-                <textarea
-                  id="c-message"
-                  name="message"
-                  rows={6}
-                  placeholder="Tell me about your project, timeline, and goals…"
-                  value={form.message}
-                  onChange={(event) => update('message', event.target.value)}
-                  className={`field__control field__control--area${fieldError(messageValid)}`}
-                />
-              </label>
-
-              <div className="contact-form__footer">
-                <button
-                  type="submit"
-                  disabled={status === 'sending' || status === 'sent'}
-                  className={`btn btn--primary${status === 'sent' ? ' is-sent' : ''}`}
-                >
-                  {status === 'sending'
-                    ? 'Opening mail client…'
-                    : status === 'sent'
-                      ? 'Draft ready ✓'
-                      : 'Send message'}
-                  {status === 'idle' && (
-                    <span className="btn__arrow" aria-hidden="true">
-                      ↗
+              <fieldset disabled={status === 'sending'} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'contents' }}>
+                <div className="contact-form__row">
+                  <label className="field" htmlFor="c-name">
+                    <span className="field__label">
+                      Name<span className="field__req">*</span>
                     </span>
-                  )}
-                </button>
+                    <input
+                      id="c-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      maxLength={100}
+                      aria-invalid={touched && !nameValid}
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={(event) => update('name', event.target.value)}
+                      className={`field__control${fieldError(nameValid)}`}
+                    />
+                  </label>
 
-                <p className="contact-form__hint" role="status" aria-live="polite">
-                  {status === 'error' && touched && !isValid
-                    ? 'Please complete the required fields with a valid email.'
-                    : status === 'sent'
-                      ? 'Your email client should open with a pre-filled draft.'
-                      : 'Opens your mail app — no data is stored.'}
-                </p>
-              </div>
+                  <label className="field" htmlFor="c-email">
+                    <span className="field__label">
+                      Email<span className="field__req">*</span>
+                    </span>
+                    <input
+                      id="c-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      maxLength={254}
+                      aria-invalid={touched && !emailValid}
+                      placeholder="you@example.com"
+                      value={form.email}
+                      onChange={(event) => update('email', event.target.value)}
+                      className={`field__control${fieldError(emailValid)}`}
+                    />
+                  </label>
+                </div>
+
+                <label className="field" htmlFor="c-subject">
+                  <span className="field__label">Subject</span>
+                  <div className="field__select-wrap">
+                    <select
+                      id="c-subject"
+                      name="subject"
+                      value={form.subject}
+                      onChange={(event) => update('subject', event.target.value)}
+                      className="field__control field__control--select"
+                    >
+                      {SUBJECTS.map((subject) => (
+                        <option key={subject} value={subject}>
+                          {subject}
+                        </option>
+                      ))}
+                    </select>
+                    <svg
+                      className="field__chevron"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      aria-hidden="true"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </div>
+                </label>
+
+                <label className="field" htmlFor="c-message">
+                  <span className="field__label">
+                    Message<span className="field__req">*</span>
+                  </span>
+                  <textarea
+                    id="c-message"
+                    name="message"
+                    rows={6}
+                    required
+                    maxLength={5000}
+                    aria-invalid={touched && !messageValid}
+                    placeholder="Tell me about your project, timeline, and goals…"
+                    value={form.message}
+                    onChange={(event) => update('message', event.target.value)}
+                    className={`field__control field__control--area${fieldError(messageValid)}`}
+                  />
+                </label>
+
+                <div className="contact-form__footer">
+                  <button
+                    type="submit"
+                    disabled={status === 'sending' || status === 'sent'}
+                    className={`btn btn--primary${status === 'sent' ? ' is-sent' : ''}`}
+                  >
+                    {status === 'sending'
+                      ? 'Sending…'
+                      : status === 'sent'
+                        ? 'Message sent ✓'
+                        : 'Send message'}
+                    {status === 'idle' && (
+                      <span className="btn__arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    )}
+                  </button>
+
+                  <p className="contact-form__hint" role="status" aria-live="polite">
+                    {status === 'error' && error
+                      ? error
+                      : status === 'error' && touched && !isValid
+                      ? 'Please complete the required fields with a valid email.'
+                      : status === 'sent'
+                        ? 'Thanks! Your message has been submitted successfully.'
+                        : 'Your message is sent directly to my inbox.'}
+                  </p>
+                </div>
+              </fieldset>
             </form>
           </section>
         </Reveal>
