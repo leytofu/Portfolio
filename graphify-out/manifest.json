@@ -42,10 +42,10 @@
     "semantic_hash": ""
   },
   "src/components/CinematicIntro.tsx": {
-    "mtime": 1792498974.090847,
-    "seen": 1792662167.7728667,
-    "ast_hash": "f070a22c0658c4d8636b4cc49bcf88d2",
-    "semantic_hash": "f070a22c0658c4d8636b4cc49bcf88d2"
+    "mtime": 1792682952.3780105,
+    "seen": 1792683234.9756153,
+    "ast_hash": "6fd632369ffbff230a45c55bf891d595",
+    "semantic_hash": ""
   },
   "src/components/CommandPalette.tsx": {
     "mtime": 1792489299.1273727,
@@ -162,10 +162,10 @@
     "semantic_hash": "aaf539274a643f9a512a0524c3d79f0f"
   },
   "src/data/portfolio.json": {
-    "mtime": 1792496974.3013928,
-    "seen": 1792662167.7728667,
-    "ast_hash": "f1d4185158eac58ab8b385a9af105a12",
-    "semantic_hash": "f1d4185158eac58ab8b385a9af105a12"
+    "mtime": 1792683185.8904834,
+    "seen": 1792683234.9756153,
+    "ast_hash": "07ab2c1c6b95c64a02099bbe563f8285",
+    "semantic_hash": ""
   },
   "src/hooks/useDocumentTitle.ts": {
     "mtime": 1790743587.7692401,
@@ -192,16 +192,16 @@
     "semantic_hash": "850ebb5209f68e67510d05313b94b551"
   },
   "src/pages/Contact.tsx": {
-    "mtime": 1792678699.6423132,
-    "seen": 1792679043.0989952,
-    "ast_hash": "7c7d87b92422dcf24b991ddcdff999f7",
+    "mtime": 1792683185.897865,
+    "seen": 1792683234.9756153,
+    "ast_hash": "4430fb948ba1621af882c989ab049aec",
     "semantic_hash": ""
   },
   "src/pages/Home.tsx": {
-    "mtime": 1792506360.0110009,
-    "seen": 1792662167.7728667,
-    "ast_hash": "52146a28b819eb424086f5096962c505",
-    "semantic_hash": "52146a28b819eb424086f5096962c505"
+    "mtime": 1792683185.8924809,
+    "seen": 1792683234.9756153,
+    "ast_hash": "8426a4c44249af43e255a397b8048c3d",
+    "semantic_hash": ""
   },
   "src/pages/NotFound.tsx": {
     "mtime": 1792493020.453359,
@@ -228,10 +228,10 @@
     "semantic_hash": "9e366037e6404c8dc22e945b810d6667"
   },
   "src/types.ts": {
-    "mtime": 1791778751.3119924,
-    "seen": 1792662167.7728667,
-    "ast_hash": "065c8ede1080742905cd664154ace4d6",
-    "semantic_hash": "065c8ede1080742905cd664154ace4d6"
+    "mtime": 1792683185.891477,
+    "seen": 1792683234.9756153,
+    "ast_hash": "d00548ddbc0c0ce1c098cad8be09b309",
+    "semantic_hash": ""
   },
   "tsconfig.app.json": {
     "mtime": 1792679023.2288737,
@@ -339,6 +339,24 @@
     "mtime": 1792469906.7466486,
     "seen": 1792680964.9407516,
     "ast_hash": "38db4dfa32924a34e2924c8d9b23a2cc",
+    "semantic_hash": ""
+  },
+  "src/hooks/useAvailability.ts": {
+    "mtime": 1792683185.8924809,
+    "seen": 1792683234.9756153,
+    "ast_hash": "1684300beb0ba878c1561697496bb807",
+    "semantic_hash": ""
+  },
+  "src/lib/availability.ts": {
+    "mtime": 1792683185.8924809,
+    "seen": 1792683234.9756153,
+    "ast_hash": "7c1d35b03729c47d41b7110c981236aa",
+    "semantic_hash": ""
+  },
+  "tests/availability.test.mjs": {
+    "mtime": 1792683229.2532341,
+    "seen": 1792683234.9756153,
+    "ast_hash": "5317df9c6d37dcc0fefac3f58973a02f",
     "semantic_hash": ""
   }
 }

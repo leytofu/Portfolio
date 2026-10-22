@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { PageIntro } from '@/components/PageIntro'
 import { Reveal } from '@/components/Reveal'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAvailability } from '@/hooks/useAvailability'
 import portfolio from '@/data/portfolio.json'
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
@@ -12,6 +13,7 @@ export default function Contact() {
   useDocumentTitle(`Contact — ${portfolio.hero.name}`)
 
   const [status, setStatus] = useState<FormStatus>('idle')
+  const availability = useAvailability()
   const [touched, setTouched] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
@@ -91,7 +93,7 @@ export default function Contact() {
             </div>
             <div className="intro-meta__row">
               <span className="mono-label">Status</span>
-              <span className="intro-meta__status">{portfolio.hero.status}</span>
+              <span className={`intro-meta__status${availability.isOffDuty ? ' is-off-duty' : ''}`} role="status" aria-live="polite">{availability.label}</span>
             </div>
           </div>
         }
@@ -105,9 +107,9 @@ export default function Contact() {
                 <p className="eyebrow">01 — Message</p>
                 <h2 className="bento__title">Tell me what you&apos;re working on.</h2>
               </div>
-              <span className="chip chip--sm">
+              <span className={`chip chip--sm${availability.isOffDuty ? ' is-off-duty' : ''}`} role="status" aria-live="polite" title={portfolio.availability.scheduleNote}>
                 <span className="pulse-dot" aria-hidden="true" />
-                Available
+                {availability.label}
               </span>
             </div>
 
@@ -279,13 +281,14 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <article className="bento contact-note">
+            <article className={`bento contact-note${availability.isOffDuty ? ' is-off-duty' : ''}`}>
               <span className="pulse-dot" aria-hidden="true" />
               <div>
-                <p className="contact-note__title">{portfolio.hero.status}</p>
+                <p className="contact-note__title">{availability.label} · {portfolio.hero.status}</p>
                 <p className="contact-note__text">
                   Based in the Philippines · Open to internships, junior roles, and collaborations.
                 </p>
+                <p className="contact-note__text">{portfolio.availability.scheduleNote}</p>
               </div>
             </article>
           </Reveal>

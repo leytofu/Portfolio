@@ -7,6 +7,7 @@ import { Reveal } from '@/components/Reveal'
 import { SocialLinks } from '@/components/SocialLinks'
 import { TechIcon } from '@/components/icons'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useAvailability } from '@/hooks/useAvailability'
 import portfolio from '@/data/portfolio.json'
 
 const location = portfolio.hero.location.replace(/^Based in\s+/i, '')
@@ -24,6 +25,7 @@ export default function Home() {
   const initials = `${portfolio.hero.firstName?.[0] ?? ''}${portfolio.hero.lastName?.[0] ?? ''}`.toUpperCase()
 
   const introActive = useIntroActive()
+  const availability = useAvailability()
   const [introReveal, setIntroReveal] = useState(false)
   const wasIntroActive = useRef(introActive)
 
@@ -43,9 +45,11 @@ export default function Home() {
           <div className="hero__copy">
             <Reveal>
               <div className="hero__top">
-                <span className="status-pill">
+                <span className={`status-pill${availability.isOffDuty ? ' is-off-duty' : ''}`} title={portfolio.availability.scheduleNote}>
                   <span className="pulse-dot" aria-hidden="true" />
                   {portfolio.hero.status}
+                  <span aria-hidden="true">·</span>
+                  <span role="status" aria-live="polite">{availability.label}</span>
                 </span>
                 <span className="hero__top-note">Portfolio · 2026</span>
               </div>

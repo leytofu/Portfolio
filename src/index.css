@@ -531,6 +531,20 @@ ol {
   animation: pulse-ring 2.4s ease-out infinite;
 }
 
+.is-off-duty .pulse-dot {
+  background: var(--faint);
+  box-shadow: none;
+}
+
+.is-off-duty .pulse-dot::after {
+  display: none;
+}
+
+:root[data-theme] .intro-meta__status.is-off-duty,
+:root[data-theme] .is-off-duty .contact-note__title {
+  color: var(--muted);
+}
+
 @keyframes pulse-ring {
   0% {
     opacity: 0.8;

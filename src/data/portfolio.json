@@ -138,6 +138,14 @@
     { "label": "LinkedIn", "username": "charlie", "url": "https://linkedin.com" },
     { "label": "Email", "username": "leycharputhboyles@gmail.com", "url": "mailto:leycharputhboyles@gmail.com" }
   ],
+  "availability": {
+    "timeZone": "Asia/Manila",
+    "offDutyStartHour": 2,
+    "offDutyEndHour": 5,
+    "onlineLabel": "Online",
+    "offDutyLabel": "Off duty",
+    "scheduleNote": "Off duty 2:00–5:00 AM Philippine time. You can send a message anytime."
+  },
   "footer": [
     { "label": "Home", "url": "/" },
     { "label": "About", "url": "/about" },

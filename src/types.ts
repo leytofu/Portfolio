@@ -82,7 +82,17 @@ export interface TechBadge {
   type: string
 }
 
+export interface AvailabilitySchedule {
+  timeZone: string
+  offDutyStartHour: number
+  offDutyEndHour: number
+  onlineLabel: string
+  offDutyLabel: string
+  scheduleNote: string
+}
+
 export interface PortfolioData {
+  availability: AvailabilitySchedule
   hero: Hero
   navLinks: NavLink[]
   stats: Stat[]

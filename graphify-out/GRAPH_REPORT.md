@@ -1,17 +1,17 @@
 # Graph Report - Portfolio  (2026-10-22)
 
 ## Corpus Check
-- 50 files · ~104,508 words
+- 53 files · ~104,849 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
 ## Summary
-- 290 nodes · 535 edges · 19 communities (14 shown, 5 thin omitted)
+- 297 nodes · 557 edges · 20 communities (15 shown, 5 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5621eec9`
+- Built from commit: `98f0762c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,12 +31,13 @@
 - Next.js Config (Vestigial)
 - Page Header Component
 - TypeScript Project References
-- devDependencies
+- contact.test.mjs
 - Claude Code Project Instructions
 - vercel.json
+- react-router-dom
 
 ## God Nodes (most connected - your core abstractions)
-1. `react` - 22 edges
+1. `react` - 23 edges
 2. `compilerOptions` - 20 edges
 3. `TechIcon()` - 16 edges
 4. `Shell()` - 15 edges
@@ -67,19 +68,19 @@
 - **Dark Developer-Focused Visual Language (theme script, VS Code framing, blue-accent assets)** — index_theme_bootstrap_script, index_typography_stack, public_favicon_brand_glyph, ref_vs_code_portfolio_dashboard_design_reference, ref_vs_code_portfolio_dashboard_vscode_frame_chrome, ref_vs_code_portfolio_dashboard_dark_blue_aesthetic [INFERRED 0.75]
 - **Hero Portrait Asset Pipeline (docs, PROFILE_PATH, placeholder SVG, actual photo)** — public_images_readme_profile_portrait_setup, public_images_readme_profile_path_constant, public_images_readme_silhouette_fallback, public_images_profile_svg_placeholder, public_images_mypfp_portrait_photo [INFERRED 0.85]
 
-## Communities (19 total, 5 thin omitted)
+## Communities (20 total, 5 thin omitted)
 
 ### Community 0 - "Shared UI Building Blocks"
-Cohesion: 0.13
-Nodes (27): react-router-dom, TechIcon(), useIntroActive(), PageIntro(), PageIntroProps, PROFILE_PATH, ProfilePortrait(), ProfilePortraitProps (+19 more)
+Cohesion: 0.14
+Nodes (25): TechIcon(), useIntroActive(), PageIntro(), PageIntroProps, PROFILE_PATH, ProfilePortrait(), ProfilePortraitProps, ProjectCard() (+17 more)
 
 ### Community 1 - "App Shell and Navigation"
 Cohesion: 0.12
 Nodes (28): CommandPalette(), CommandPaletteProps, SearchItem, CssIcon(), HtmlIcon(), TailwindIcon(), VscodeIcon(), GitHubIcon() (+20 more)
 
 ### Community 2 - "NPM Dependency Manifest"
-Cohesion: 0.05
-Nodes (27): dependencies, motion, react, react-dom, react-router-dom, name, private, scripts (+19 more)
+Cohesion: 0.06
+Nodes (29): dependencies, motion, react, react-dom, react-router-dom, devDependencies, oxlint, @types/node (+21 more)
 
 ### Community 3 - "App.tsx"
 Cohesion: 0.14
@@ -98,8 +99,8 @@ Cohesion: 0.12
 Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, noEmit, noFallthroughCasesInSwitch (+8 more)
 
 ### Community 7 - "Portfolio Data Domain Types"
-Cohesion: 0.13
-Nodes (13): ProjectCardProps, ContactMethod, Education, Experience, FooterLink, Hero, NavLink, PortfolioData (+5 more)
+Cohesion: 0.14
+Nodes (12): AvailabilitySchedule, ContactMethod, Education, Experience, FooterLink, Hero, NavLink, PortfolioData (+4 more)
 
 ### Community 8 - "Agent Workflow Governance"
 Cohesion: 0.23
@@ -113,9 +114,9 @@ Nodes (12): Site Identity Metadata — Charlie Nozares, Full Stack Developer, Pr
 Cohesion: 0.33
 Nodes (5): plugins, rules, react/only-export-components, react/rules-of-hooks, $schema
 
-### Community 16 - "devDependencies"
-Cohesion: 0.25
-Nodes (8): devDependencies, oxlint, @types/node, @types/react, @types/react-dom, typescript, vite, @vitejs/plugin-react
+### Community 16 - "contact.test.mjs"
+Cohesion: 0.14
+Nodes (7): typescript, fetch(), json(), SUBJECTS, { availability: schedule }, originalEnv, valid
 
 ### Community 17 - "Claude Code Project Instructions"
 Cohesion: 0.33
@@ -125,25 +126,29 @@ Nodes (5): Claude Code Project Instructions, Development Workflow, Graphify, Obs
 Cohesion: 0.50
 Nodes (3): builds, routes, $schema
 
+### Community 19 - "react-router-dom"
+Cohesion: 0.33
+Nodes (6): react-router-dom, ProjectCardProps, ProjectThumbnail(), NotFound(), ProjectDetail(), Project
+
 ## Knowledge Gaps
 - **4 isolated node(s):** `@types/node`, `@types/react`, `@types/react-dom`, `oxlint`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 135 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 133 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `react` connect `App.tsx` to `Shared UI Building Blocks`, `App Shell and Navigation`, `NPM Dependency Manifest`, `Tech Stack Icon Library`?**
-  _High betweenness centrality (0.153) - this node is a cross-community bridge._
+  _High betweenness centrality (0.154) - this node is a cross-community bridge._
 - **What connects `@types/node`, `@types/react`, `@types/react-dom` to the rest of the system?**
   _4 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Shared UI Building Blocks` be split into smaller, more focused modules?**
-  _Cohesion score 0.1292929292929293 - nodes in this community are weakly interconnected._
-- **Why does `react-router-dom` connect `Shared UI Building Blocks` to `App Shell and Navigation`, `NPM Dependency Manifest`, `App.tsx`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
+  _Cohesion score 0.14304993252361672 - nodes in this community are weakly interconnected._
+- **Why does `react-router-dom` connect `react-router-dom` to `Shared UI Building Blocks`, `App Shell and Navigation`, `NPM Dependency Manifest`, `App.tsx`?**
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
 - **Should `App Shell and Navigation` be split into smaller, more focused modules?**
   _Cohesion score 0.12121212121212122 - nodes in this community are weakly interconnected._
+- **Why does `typescript` connect `contact.test.mjs` to `NPM Dependency Manifest`?**
+  _High betweenness centrality (0.046) - this node is a cross-community bridge._
 - **Should `NPM Dependency Manifest` be split into smaller, more focused modules?**
-  _Cohesion score 0.05384615384615385 - nodes in this community are weakly interconnected._
-- **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.13538461538461538 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0625 - nodes in this community are weakly interconnected._
