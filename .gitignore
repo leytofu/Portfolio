@@ -14,7 +14,7 @@ dist-ssr
 .playwright-mcp
 intro-*.png
 post-intro-*.png
-
+.vercel/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
