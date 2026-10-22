@@ -226,11 +226,12 @@ export function CinematicIntro({ onFinish }: { onFinish: () => void }) {
         exit={{ opacity: 0, y: 8, transition: { duration: 0.25 } }}
         transition={{ delay: 0.12, duration: 0.45, ease: EASE_OUT }}
       >
+        {/*
         <div className="intro__load">
           <IntroCounter />
           <span className="intro__load-label">Loading experience</span>
         </div>
-
+        */}
         <div className="intro__progress" aria-hidden="true">
           <motion.span
             initial={{ scaleX: 0 }}
