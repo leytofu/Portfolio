@@ -112,12 +112,12 @@
   "contacts": [
     { "label": "Email", "value": "leycharputhboyles@gmail.com", "url": "mailto:leycharputhboyles@gmail.com" },
     { "label": "GitHub", "value": "github.com/leytofu", "url": "https://github.com/leytofu" },
-    { "label": "LinkedIn", "value": "linkedin.com/in/charlie-nozares", "url": "https://linkedin.com" },
+    { "label": "LinkedIn", "value": "linkedin.com/in/charlie-boyles", "url": "https://linkedin.com/in/charlie-boyles" },
     { "label": "Location", "value": "Philippines", "url": "" }
   ],
   "socialMedia": [
     { "label": "GitHub", "username": "@leytofu", "url": "https://github.com/leytofu" },
-    { "label": "LinkedIn", "username": "charlie", "url": "https://linkedin.com" },
+    { "label": "LinkedIn", "username": "Char-lie Boyles", "url": "https://linkedin.com/in/charlie-boyles" },
     { "label": "Email", "username": "leycharputhboyles@gmail.com", "url": "mailto:leycharputhboyles@gmail.com" }
   ],
   "availability": {

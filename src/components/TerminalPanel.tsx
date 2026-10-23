@@ -242,7 +242,7 @@ export function TerminalPanel({ isOpen, onClose, onToggleTheme }: TerminalPanelP
         newLines.push({
           id: `out-${Date.now()}`,
           type: 'text',
-          content: `Email: ${portfolio.hero.email}\nGitHub: https://github.com/leytofu\nLinkedIn: https://linkedin.com`,
+          content: `Email: ${portfolio.hero.email}\nGitHub: https://github.com/leytofu\nLinkedIn: https://linkedin.com/in/charlie-boyles`,
         })
         break
 

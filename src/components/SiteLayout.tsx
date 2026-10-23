@@ -4,7 +4,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import portfolio from '@/data/portfolio.json'
 
 const GITHUB = 'https://github.com/leytofu'
-const LINKEDIN = 'https://linkedin.com'
+const LINKEDIN = 'https://linkedin.com/in/charlie-boyles'
 
 function GitHubIcon() {
   return (
