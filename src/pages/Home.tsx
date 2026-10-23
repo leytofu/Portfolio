@@ -61,8 +61,6 @@ export default function Home() {
 
               <p className="hero__role">
                 {portfolio.hero.role}
-                <span className="hero__role-sep" aria-hidden="true" />
-                {location}
               </p>
 
               <p className="hero__lede">{portfolio.hero.bio}</p>
@@ -91,18 +89,21 @@ export default function Home() {
 
           <Reveal className="hero__visual" delay={0.12}>
             <div className="portrait-frame">
+              <span className="portrait-frame__plate" aria-hidden="true" />
               <div className="portrait-frame__glow" aria-hidden="true" />
+              <span className="portrait-frame__caption">01 — Profile</span>
               <div className="portrait-frame__media">
                 <ProfilePortrait alt={`${portfolio.hero.name} portrait`} initials={initials} />
-              </div>
-              <div className="portrait-frame__meta">
-                <div>
-                  <span className="mono-label">Based in</span>
-                  <span className="portrait-frame__value">{location}</span>
-                </div>
-                <div>
-                  <span className="mono-label">Studying</span>
-                  <span className="portrait-frame__value">BSIT · 4th year</span>
+                <span className="portrait-frame__grain" aria-hidden="true" />
+                <div className="portrait-frame__meta">
+                  <div>
+                    <span className="mono-label">Focus</span>
+                    <span className="portrait-frame__value">Web · Mobile App</span>
+                  </div>
+                  <div>
+                    <span className="mono-label">Studying</span>
+                    <span className="portrait-frame__value">BSIT · 4th year</span>
+                  </div>
                 </div>
               </div>
             </div>
