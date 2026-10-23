@@ -92,6 +92,28 @@ export default function Home() {
               <span className="portrait-frame__plate" aria-hidden="true" />
               <div className="portrait-frame__glow" aria-hidden="true" />
               <span className="portrait-frame__caption">01 — Profile</span>
+              <svg className="portrait-frame__bolt" viewBox="0 0 64 96" aria-hidden="true">
+                <defs>
+                  <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#c4b5fd" />
+                    <stop offset="50%" stopColor="#a78bfa" />
+                    <stop offset="100%" stopColor="#22d3ee" />
+                  </linearGradient>
+                  <linearGradient id="boltGradLight" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#7c3aed" />
+                    <stop offset="50%" stopColor="#6d28d9" />
+                    <stop offset="100%" stopColor="#0891b2" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M38 5 15 47h12l-5 44 28-53H37l1-33Z"
+                  fill="none"
+                  stroke="url(#boltGrad)"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               <div className="portrait-frame__media">
                 <ProfilePortrait alt={`${portfolio.hero.name} portrait`} initials={initials} />
                 <span className="portrait-frame__grain" aria-hidden="true" />

@@ -895,6 +895,12 @@ ol {
   max-width: 420px;
 }
 
+@property --frame-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .portrait-frame {
   position: relative;
   padding: 12px;
@@ -957,6 +963,90 @@ ol {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Electric rim: a comet of light that circles the frame on hover. */
+.portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--frame-angle),
+    transparent 0deg,
+    rgba(167, 139, 250, 0) 14deg,
+    rgba(167, 139, 250, 0.95) 42deg,
+    rgba(224, 242, 254, 1) 50deg,
+    rgba(34, 211, 238, 0.95) 58deg,
+    transparent 98deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.portrait-frame:hover::after {
+  opacity: 1;
+  animation: frame-spin 2.2s linear infinite;
+}
+
+@keyframes frame-spin {
+  to {
+    --frame-angle: 360deg;
+  }
+}
+
+.portrait-frame__bolt {
+  position: absolute;
+  top: -16px;
+  right: -12px;
+  z-index: 5;
+  width: 58px;
+  height: 84px;
+  opacity: 0;
+  transform: translateY(6px) scale(0.92);
+  transform-origin: top right;
+  filter: drop-shadow(0 0 7px rgba(103, 232, 249, 0.6));
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s ease;
+}
+
+.portrait-frame:hover .portrait-frame__bolt {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: bolt-flicker 2.4s ease-in-out 0.15s infinite;
+}
+
+@keyframes bolt-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.35;
+  }
+  48% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 0.55;
+  }
+  76% {
+    opacity: 1;
+  }
 }
 
 .portrait-frame__glow {
@@ -3524,6 +3614,14 @@ ol {
   box-shadow: 0 46px 100px -60px rgba(48, 38, 70, 0.45);
 }
 
+:root[data-theme='light'] .portrait-frame__bolt {
+  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.35));
+}
+
+:root[data-theme='light'] .portrait-frame__bolt path {
+  stroke: url(#boltGradLight);
+}
+
 :root[data-theme='light'] .profile-portrait--loading {
   background: linear-gradient(110deg, #eee8de 28%, #faf7f1 48%, #eee8de 68%);
 }
@@ -3743,5 +3841,10 @@ ol {
   .portrait-frame:hover,
   .portrait-frame:hover .profile-portrait {
     transform: none;
+  }
+
+  .portrait-frame:hover::after,
+  .portrait-frame:hover .portrait-frame__bolt {
+    animation: none;
   }
 }
