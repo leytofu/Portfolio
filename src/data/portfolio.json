@@ -20,14 +20,13 @@
     { "id": "contact", "label": "Contact", "url": "/contact" }
   ],
   "stats": [
-    { "value": "3+", "label": "Key Projects" },
+    { "value": "2+", "label": "Key Projects" },
     { "value": "9+", "label": "Technologies" },
     { "value": "4th", "label": "Year IT Student" }
   ],
   "featured": [
     "laravel-food-reservation",
-    "islasafe-emergency",
-    "tmc-llm-local"
+    "islasafe-emergency"
   ],
   "projects": [
     {
@@ -54,28 +53,12 @@
       "description": "SOS and incident monitoring system with real-time map and notifications. Integrates Laravel backend with React frontend and Firebase real-time listeners for fast emergency response and hazard tracking.",
       "tech": ["Laravel", "React", "Firebase", "TypeScript", "MapLibre GL"],
       "url": "https://github.com/leytofu/IslaSafeFrontend",
-      "period": "2025",
+      "period": "2026",
       "points": [
         "SOS and incident monitoring system with real-time map and notifications",
         "Interactive GPS hazard overlays and evacuation center routing powered by MapLibre GL",
         "Real-time alerts and status updates broadcasted immediately with Firebase",
         "Dispatcher management dashboard for incident triaging and status logs"
-      ]
-    },
-    {
-      "id": "tmc-llm-local",
-      "name": "TMC-LLM Local AI Model",
-      "tagline": "Fine-tuned local LLM for TMC knowledge with offline assistant.",
-      "techStack": "Python • GGUF • 9router",
-      "description": "Fine-tuned local LLM for TMC knowledge with offline assistant. Packaged with quantized GGUF weights to run entirely on local consumer hardware without cloud API dependencies.",
-      "tech": ["Python", "GGUF", "9router", "PyTorch"],
-      "url": "https://github.com/leytofu/mini-llm",
-      "period": "2025",
-      "points": [
-        "Fine-tuned local LLM for TMC knowledge with offline assistant",
-        "GGUF quantization for fast local CPU/GPU inference with minimal RAM footprint",
-        "Offline chatbot terminal and desktop interface with memory and sampling controls",
-        "Trained on institutional curricula and documentation for reliable answers"
       ]
     }
   ],
@@ -83,29 +66,27 @@
     {
       "company": "Full Stack Projects & Academic Development",
       "role": "Full Stack Developer & Student",
-      "period": "2024 — Present",
+      "period": "2025 — Present",
       "location": "Philippines",
       "tag": "Active",
       "points": [
-        "Built and deployed the Laravel Food Reservation platform with full role management and online table booking",
-        "Architected the IslaSafe Emergency System connecting Laravel, React, and Firebase for real-time disaster alerts",
-        "Fine-tuned and deployed TMC-LLM Local AI Model in GGUF format for offline institutional knowledge assistance",
+        "Architected the IslaSafe Emergency System for real-time disaster alerts",
         "Continuously exploring modern web frameworks, API design, and distributed systems"
       ]
     }
   ],
   "education": [
     {
-      "school": "TMC (Trinidad Municipal College)",
+      "school": "TMC (Trinidad Municipal College), Bohol",
       "title": "Bachelor of Science in Information Technology (BSIT)",
       "timeRange": "SY 2023 – 2027 (4th Year)",
-      "description": "Focusing on Software Engineering, Web Systems, Database Management, and Cloud Computing. Actively building production-grade applications and local AI systems."
+      "description": "Focusing on Software Engineering, Web Systems, and Database Management. Actively building production-grade applications."
     }
   ],
   "skills": [
     {
       "category": "Backend",
-      "items": ["Laravel", "PHP", "MySQL", "Node.js"]
+      "items": ["Laravel", "PHP", "MySQL", "MongoDB", "Node.js", "FastAPI"]
     },
     {
       "category": "Frontend",
@@ -123,6 +104,7 @@
     { "name": "TypeScript", "color": "#3178c6", "type": "frontend" },
     { "name": "JavaScript", "color": "#f7df1e", "type": "frontend" },
     { "name": "MySQL", "color": "#4479a1", "type": "database" },
+    { "name": "Node.js", "color": "#339933", "type": "backend" },
     { "name": "PostgreSQL", "color": "#336791", "type": "database" },
     { "name": "Git", "color": "#f05032", "type": "tool" },
     { "name": "VS Code", "color": "#007acc", "type": "tool" }

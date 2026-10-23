@@ -221,6 +221,34 @@ export function MaplibreIcon(p: IconProps = {}) {
   )
 }
 
+export function NodeIcon(p: IconProps = {}) {
+  return monogram('N', '#339933', '#ffffff', 11, p)
+}
+
+export function MongoIcon(p: IconProps = {}) {
+  return svg(
+    <>
+      <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="#001E2B" />
+      <path
+        d="M12 3.6c2.4 2.6 3.9 5.4 3.9 8.3 0 3-1.6 5.4-3.9 6.5-2.3-1.1-3.9-3.5-3.9-6.5 0-2.9 1.5-5.7 3.9-8.3Z"
+        fill="#47A248"
+      />
+      <path d="M12 18.4v2.2" stroke="#47A248" strokeWidth="1.4" strokeLinecap="round" />
+    </>,
+    p,
+  )
+}
+
+export function FastapiIcon(p: IconProps = {}) {
+  return svg(
+    <>
+      <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="#009688" />
+      <path d="M13.6 3.6 6.9 13.1h4.1l-1.3 7.3 6.9-9.9h-4.2l1.2-6.9Z" fill="#fff" />
+    </>,
+    p,
+  )
+}
+
 export function PytorchIcon(p: IconProps = {}) {
   return monogram('PT', '#EE4C2C', '#ffffff', 9, p)
 }
@@ -245,6 +273,12 @@ const MAP: Record<string, (p: IconProps) => React.ReactElement> = {
   typescript: TypescriptIcon,
   javascript: JavascriptIcon,
   mysql: MysqlIcon,
+  mongodb: MongoIcon,
+  mongo: MongoIcon,
+  fastapi: FastapiIcon,
+  'node.js': NodeIcon,
+  node: NodeIcon,
+  nodejs: NodeIcon,
   postgresql: PostgresIcon,
   git: GitIcon,
   'vs code': VscodeIcon,

@@ -54,7 +54,7 @@ export default function About() {
               <p className="bento__text">{portfolio.hero.about}</p>
               <p className="about-note">
                 <span className="mono-label">Currently</span>
-                Deepening my knowledge in systems design, API architecture, and local AI.
+                Deepening my knowledge in systems design.
               </p>
               <div className="fact-grid">
                 <div className="fact">
@@ -67,7 +67,7 @@ export default function About() {
                 </div>
                 <div className="fact">
                   <span className="mono-label">Focus</span>
-                  <span className="fact__value">Full-stack web & local AI</span>
+                  <span className="fact__value">Web · Mobile App</span>
                 </div>
                 <div className="fact">
                   <span className="mono-label">Status</span>
@@ -98,7 +98,7 @@ export default function About() {
             <article className="bento bento--experience">
               <div className="bento__head">
                 <p className="eyebrow">02 — Experience</p>
-                <span className="mono-label">2024 — Present</span>
+                <span className="mono-label">2025 — Present</span>
               </div>
               <h2 className="bento__title">Where I&apos;ve built</h2>
 
@@ -165,7 +165,7 @@ export default function About() {
               <p className="eyebrow">05 — Toolbox</p>
               <h3 className="bento__title">Always adding to the kit.</h3>
               <div className="stack-chips">
-                {portfolio.coreTech.slice(0, 6).map((tech) => (
+                {portfolio.coreTech.slice(0, 7).map((tech) => (
                   <span className="chip" key={tech.name}>
                     <TechIcon name={tech.name} />
                     {tech.name}

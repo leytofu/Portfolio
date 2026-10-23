@@ -19,7 +19,7 @@ export default function Skills() {
             <span className="grad-text">toolkit.</span>
           </>
         }
-        description="Core technologies, frameworks, and tools I use to design, build, and ship modern web applications and AI systems."
+        description="Core technologies, frameworks, and tools I use to design, build, and ship modern web and mobile applications."
         aside={
           <div className="intro-meta">
             <div className="intro-meta__row">
@@ -32,7 +32,7 @@ export default function Skills() {
             </div>
             <div className="intro-meta__row">
               <span className="mono-label">Focus</span>
-              <span>Web · AI</span>
+              <span>Web · Mobile App</span>
             </div>
           </div>
         }

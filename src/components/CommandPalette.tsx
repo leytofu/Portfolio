@@ -183,7 +183,7 @@ export function CommandPalette({
       recs.push({
         id: 'rec-projects',
         title: "What's Next → Explore Featured Projects",
-        subtitle: 'View Laravel Food Reservation, IslaSafe, and Local AI',
+        subtitle: 'View Laravel Food Reservation and IslaSafe',
         category: "What's Next",
         icon: 'sparkle',
         action: () => {

@@ -230,35 +230,35 @@ export function ProjectThumbnail({ id, className = '' }: { id: string; className
     )
   }
 
-  // TMC-LLM Local AI Model default
+  // Generic fallback for projects without a bespoke thumbnail
   return (
-    <div className={`project-card__thumb ${className} project-card__thumb--3`}>
+    <div className={`project-card__thumb ${className}`}>
       <svg
-          viewBox="0 0 480 270"
-          fill="none"
-          preserveAspectRatio="xMidYMid slice"
-          className="project-card__thumb-svg"
-        >
+        viewBox="0 0 480 270"
+        fill="none"
+        preserveAspectRatio="xMidYMid slice"
+        className="project-card__thumb-svg"
+      >
         <defs>
-          <linearGradient id="aiBg" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="genericBg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#080c16" />
             <stop offset="50%" stopColor="#11162b" />
             <stop offset="100%" stopColor="#050811" />
           </linearGradient>
         </defs>
-        <rect width="480" height="270" fill="url(#aiBg)" />
+        <rect width="480" height="270" fill="url(#genericBg)" />
         <rect x="24" y="20" width="432" height="230" rx="8" fill="#060913" stroke="#1e293b" strokeWidth="1.2" />
         <rect x="24" y="20" width="432" height="28" rx="8" fill="#0d1424" />
         <circle cx="42" cy="34" r="4.5" fill="#ef4444" />
         <circle cx="56" cy="34" r="4.5" fill="#eab308" />
         <circle cx="70" cy="34" r="4.5" fill="#22c55e" />
-        <text x="92" y="38" fill="#94a3b8" fontSize="10" fontFamily="monospace">tmc-llm-local — v1.4.0 (GGUF Q4_K_M)</text>
-        <text x="42" y="74" fill="#38bdf8" fontSize="11" fontFamily="monospace">$ python infer.py --model tmc-knowledge.gguf --ctx 4096</text>
-        <text x="42" y="96" fill="#64748b" fontSize="10" fontFamily="monospace">[INFO] CUDA detected: using 32 offloaded GPU layers</text>
-        <text x="42" y="116" fill="#a855f7" fontSize="10.5" fontFamily="monospace">&gt;&gt;&gt; User: What are the degree requirements for BSIT Year 3?</text>
-        <text x="42" y="140" fill="#e2e8f0" fontSize="10.5" fontFamily="monospace">&gt; TMC-LLM: Year 3 focuses on Advanced Systems Integration, Web</text>
-        <text x="42" y="158" fill="#e2e8f0" fontSize="10.5" fontFamily="monospace">  Development (Laravel/React), and Capstone Research.</text>
-        <text x="42" y="184" fill="#22c55e" fontSize="10" fontFamily="monospace">[Tokens: 42/s | Latency: 12ms | VRAM: 3.4GB / 8GB]</text>
+        <text x="92" y="38" fill="#94a3b8" fontSize="10" fontFamily="monospace">project — preview</text>
+        <text x="42" y="82" fill="#38bdf8" fontSize="11" fontFamily="monospace">$ npm run build</text>
+        <text x="42" y="104" fill="#64748b" fontSize="10" fontFamily="monospace">[INFO] compiling sources…</text>
+        <text x="42" y="126" fill="#64748b" fontSize="10" fontFamily="monospace">[INFO] bundling assets…</text>
+        <text x="42" y="148" fill="#22c55e" fontSize="10" fontFamily="monospace">[DONE] build finished</text>
+        <rect x="42" y="176" width="396" height="8" rx="4" fill="#1e293b" />
+        <rect x="42" y="176" width="264" height="8" rx="4" fill="#38bdf8" />
         <rect x="42" y="202" width="8" height="14" fill="#38bdf8" opacity="0.85" />
       </svg>
     </div>
