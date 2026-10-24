@@ -1004,6 +1004,64 @@ ol {
   }
 }
 
+/* Hover-only lightning: bright cores, colored bloom, and broken perimeter arcs. */
+.portrait-frame__electricity {
+  position: absolute;
+  inset: -12px;
+  z-index: 4;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  display: none;
+  overflow: visible;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px #a78bfa) drop-shadow(0 0 9px rgba(34, 211, 238, 0.7));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portrait-frame:hover .portrait-frame__electricity {
+    display: block;
+  }
+}
+
+.portrait-frame__arc {
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 140 110 70 180 90 410;
+  animation: frame-discharge 3.6s linear infinite;
+}
+
+.portrait-frame__arc--outer {
+  stroke: #e9e2ff;
+  stroke-width: 1.8px;
+}
+
+.portrait-frame__arc--inner {
+  stroke: #67e8f9;
+  stroke-width: 1px;
+  stroke-dasharray: 80 220 120 180 60 340;
+  animation-direction: reverse;
+  animation-duration: 5.2s;
+}
+
+.portrait-frame__spark {
+  stroke: #c4b5fd;
+  stroke-width: 1.3px;
+  vector-effect: non-scaling-stroke;
+  animation: frame-spark 3.6s ease-in-out infinite;
+}
+
+@keyframes frame-discharge {
+  to { stroke-dashoffset: -1000; }
+}
+
+@keyframes frame-spark {
+  0%, 100% { opacity: 0; }
+  18%, 36% { opacity: 0.85; }
+  58%, 82% { opacity: 0.15; }
+}
+
 .portrait-frame__bolt {
   position: absolute;
   top: -16px;
@@ -1074,24 +1132,6 @@ ol {
   aspect-ratio: 4 / 5;
   border-radius: 22px;
   background: var(--surface-2);
-}
-
-.portrait-frame__caption {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  z-index: 3;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  background: rgba(8, 9, 14, 0.55);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 .portrait-frame__grain {
@@ -3618,6 +3658,19 @@ ol {
   filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.35));
 }
 
+:root[data-theme='light'] .portrait-frame__electricity {
+  filter: drop-shadow(0 0 3px rgba(124, 58, 237, 0.6));
+}
+
+:root[data-theme='light'] .portrait-frame__arc--outer,
+:root[data-theme='light'] .portrait-frame__spark {
+  stroke: #7c3aed;
+}
+
+:root[data-theme='light'] .portrait-frame__arc--inner {
+  stroke: #0891b2;
+}
+
 :root[data-theme='light'] .portrait-frame__bolt path {
   stroke: url(#boltGradLight);
 }
@@ -3846,5 +3899,14 @@ ol {
   .portrait-frame:hover::after,
   .portrait-frame:hover .portrait-frame__bolt {
     animation: none;
+  }
+
+  .portrait-frame__arc,
+  .portrait-frame__spark {
+    animation: none;
+  }
+
+  .portrait-frame__spark {
+    opacity: 0;
   }
 }
