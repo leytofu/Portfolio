@@ -17,9 +17,6 @@ export function NotFound() {
         </p>
         <Link to="/" className="btn btn--primary">
           Back home
-          <span className="btn__arrow" aria-hidden="true">
-            ↗
-          </span>
         </Link>
       </div>
     </section>

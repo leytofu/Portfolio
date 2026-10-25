@@ -112,53 +112,6 @@ export function AboutAvatar({ className = '' }: { className?: string }) {
 }
 
 export function ProjectThumbnail({ id, className = '' }: { id: string; className?: string }) {
-  if (id === 'laravel-food-reservation') {
-    return (
-      <div className={`project-card__thumb ${className} project-card__thumb--1`}>
-        <svg
-          viewBox="0 0 480 270"
-          fill="none"
-          preserveAspectRatio="xMidYMid slice"
-          className="project-card__thumb-svg"
-        >
-          <defs>
-            <linearGradient id="foodBg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#1a120c" />
-              <stop offset="50%" stopColor="#2b180d" />
-              <stop offset="100%" stopColor="#100b08" />
-            </linearGradient>
-            <radialGradient id="tableGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ea580c" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#ea580c" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="480" height="270" fill="url(#foodBg)" />
-          <ellipse cx="240" cy="150" rx="200" ry="90" fill="url(#tableGlow)" />
-          <ellipse cx="240" cy="180" rx="210" ry="70" fill="#291a10" stroke="#452715" strokeWidth="2" />
-          <ellipse cx="240" cy="165" rx="75" ry="34" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="2" />
-          <ellipse cx="240" cy="165" rx="60" ry="26" fill="#fef08a" opacity="0.9" />
-          <ellipse cx="225" cy="162" rx="28" ry="14" fill="#b45309" />
-          <ellipse cx="255" cy="165" rx="24" ry="12" fill="#d97706" />
-          <circle cx="230" cy="158" r="6" fill="#15803d" />
-          <circle cx="250" cy="160" r="5" fill="#dc2626" />
-          <circle cx="240" cy="166" r="4" fill="#16a34a" />
-          <ellipse cx="120" cy="155" rx="42" ry="20" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="1.5" />
-          <ellipse cx="120" cy="154" rx="34" ry="14" fill="#b91c1c" />
-          <circle cx="116" cy="152" r="5" fill="#facc15" />
-          <ellipse cx="360" cy="155" rx="45" ry="22" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="1.5" />
-          <ellipse cx="360" cy="155" rx="36" ry="16" fill="#047857" />
-          <ellipse cx="362" cy="154" rx="20" ry="8" fill="#f97316" />
-          <rect x="24" y="20" width="170" height="42" rx="8" fill="#0b1120" fillOpacity="0.85" stroke="#334155" strokeWidth="1" />
-          <circle cx="44" cy="41" r="5" fill="#22c55e" />
-          <text x="56" y="38" fill="#e2e8f0" fontSize="11" fontWeight="600" fontFamily="sans-serif">Table #04 Confirmed</text>
-          <text x="56" y="52" fill="#94a3b8" fontSize="9" fontFamily="monospace">7:30 PM • 4 Guests</text>
-          <rect x="360" y="20" width="96" height="26" rx="6" fill="#dc2626" fillOpacity="0.25" stroke="#ef4444" strokeWidth="1" />
-          <text x="408" y="37" textAnchor="middle" fill="#fca5a5" fontSize="10" fontWeight="700" fontFamily="sans-serif">Laravel 12</text>
-        </svg>
-      </div>
-    )
-  }
-
   if (id === 'islasafe-emergency') {
     return (
       <div className={`project-card__thumb ${className} project-card__thumb--2`}>

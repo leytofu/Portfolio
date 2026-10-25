@@ -115,7 +115,7 @@ export default function Projects() {
             rel="noreferrer"
             className="text-link"
           >
-            Browse repositories <span aria-hidden="true">↗</span>
+            Browse repositories
           </a>
         </div>
       </section>

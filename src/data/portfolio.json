@@ -20,31 +20,14 @@
     { "id": "contact", "label": "Contact", "url": "/contact" }
   ],
   "stats": [
-    { "value": "2+", "label": "Key Projects" },
+    { "value": "1", "label": "Key Projects" },
     { "value": "9+", "label": "Technologies" },
     { "value": "4th", "label": "Year IT Student" }
   ],
   "featured": [
-    "laravel-food-reservation",
     "islasafe-emergency"
   ],
   "projects": [
-    {
-      "id": "laravel-food-reservation",
-      "name": "Food Reservation",
-      "tagline": "A food reservation system with user roles, dashboard and online booking.",
-      "techStack": "Laravel 12 • PHP • MySQL",
-      "description": "A food reservation system with user roles, dashboard and online booking. Built with Laravel 12, PHP, and MySQL to streamline restaurant bookings, menu management, and administrative tracking.",
-      "tech": ["Laravel 12", "PHP", "MySQL", "Tailwind CSS"],
-      "url": "https://github.com/leytofu/laravel-food-reservation",
-      "period": "2025",
-      "points": [
-        "User role authentication and permissions for admin, staff, and customers",
-        "Interactive table and food booking dashboard with real-time reservation status",
-        "Automated order tracking and reservation management with email confirmation",
-        "Modern responsive administrative UI with live analytics and report export"
-      ]
-    },
     {
       "id": "islasafe-emergency",
       "name": "IslaSafe System",

@@ -182,8 +182,8 @@ export function CommandPalette({
     if (!q || q === 'home' || q === 'index') {
       recs.push({
         id: 'rec-projects',
-        title: "What's Next → Explore Featured Projects",
-        subtitle: 'View Laravel Food Reservation and IslaSafe',
+        title: "Explore Featured Projects",
+        subtitle: 'View the IslaSafe emergency system',
         category: "What's Next",
         icon: 'sparkle',
         action: () => {
@@ -193,7 +193,7 @@ export function CommandPalette({
       })
       recs.push({
         id: 'rec-skills',
-        title: "What's Next → Inspect Technical Skills",
+        title: "Inspect Technical Skills",
         subtitle: 'Laravel, React, TypeScript, MySQL, Python, GGUF',
         category: "What's Next",
         icon: 'tech',
@@ -205,7 +205,7 @@ export function CommandPalette({
       })
       recs.push({
         id: 'rec-terminal',
-        title: "What's Next → Launch Integrated Terminal",
+        title: "Launch Integrated Terminal",
         subtitle: 'Run interactive CLI commands (whoami, skills, cat stack)',
         category: "What's Next",
         icon: 'action',
@@ -216,7 +216,7 @@ export function CommandPalette({
       })
       recs.push({
         id: 'rec-contact',
-        title: "What's Next → Contact Me",
+        title: "Contact Me",
         subtitle: 'Send an email or connect on LinkedIn/GitHub',
         category: "What's Next",
         icon: 'action',
@@ -228,7 +228,7 @@ export function CommandPalette({
     } else if (q.includes('about') || q.includes('bio') || q.includes('edu')) {
       recs.push({
         id: 'rec-work',
-        title: "What's Next → See Built Projects",
+        title: "See Built Projects",
         subtitle: 'Review source code and project highlights',
         category: "What's Next",
         icon: 'sparkle',
@@ -239,7 +239,7 @@ export function CommandPalette({
       })
       recs.push({
         id: 'rec-contact-2',
-        title: "What's Next → Reach Out",
+        title: "Reach Out",
         subtitle: 'Get in touch for internships or collaboration',
         category: "What's Next",
         icon: 'action',
@@ -251,7 +251,7 @@ export function CommandPalette({
     } else if (q.includes('proj') || q.includes('work') || q.includes('app')) {
       recs.push({
         id: 'rec-github',
-        title: "What's Next → Visit GitHub Profile",
+        title: "Visit GitHub Profile",
         subtitle: 'github.com/leytofu — See all repositories and commits',
         category: "What's Next",
         icon: 'action',
@@ -262,7 +262,7 @@ export function CommandPalette({
       })
       recs.push({
         id: 'rec-contact-3',
-        title: "What's Next → Discuss a Project",
+        title: "Discuss a Project",
         subtitle: 'Have an idea? Send a direct message',
         category: "What's Next",
         icon: 'action',
@@ -432,7 +432,7 @@ export function CommandPalette({
         {/* Footer info bar */}
         <div className="cmd-footer">
           <div className="cmd-footer__left">
-            <span>↑↓ to navigate</span>
+            <span>Arrow keys to navigate</span>
             <span>•</span>
             <span>↵ to select</span>
             <span>•</span>

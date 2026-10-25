@@ -22,7 +22,7 @@ export default function ProjectDetail() {
   return (
     <div className="container detail-page">
       <Link to="/projects" className="back-link">
-        <span aria-hidden="true">←</span> All projects
+        All projects
       </Link>
 
       <section className="detail-hero">
@@ -41,12 +41,6 @@ export default function ProjectDetail() {
           </div>
 
           <div className="detail-hero__actions">
-            <a href={project.url} target="_blank" rel="noreferrer" className="btn btn--primary">
-              View source
-              <span className="btn__arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
             <Link to="/projects" className="btn btn--ghost">
               All projects
             </Link>
@@ -81,7 +75,7 @@ export default function ProjectDetail() {
                 rel="noreferrer"
                 className="detail-meta__link"
               >
-                GitHub ↗
+                GitHub
               </a>
             </div>
           </div>
@@ -106,7 +100,6 @@ export default function ProjectDetail() {
           <span className="eyebrow">Next project</span>
           <span className="next-project__name">
             {nextProject.name}
-            <span aria-hidden="true"> ↗</span>
           </span>
         </Link>
       )}

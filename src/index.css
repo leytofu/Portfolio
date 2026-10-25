@@ -1,6 +1,6 @@
 /* ==========================================================================
    Charlie Nozares — Portfolio
-   Minimal dark · typography-led · bento grid · violet → cyan
+   Minimal dark · typography-led · bento grid · violet to cyan
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
@@ -399,16 +399,6 @@ ol {
   font-size: 12.5px;
 }
 
-.btn__arrow {
-  display: inline-block;
-  font-size: 14px;
-  transition: transform 0.22s var(--ease-out);
-}
-
-.btn:hover .btn__arrow {
-  transform: translate(2px, -2px);
-}
-
 .chip {
   display: inline-flex;
   align-items: center;
@@ -498,17 +488,9 @@ ol {
     border-color 0.2s ease;
 }
 
-.text-link span {
-  transition: transform 0.2s var(--ease-out);
-}
-
 .text-link:hover {
   border-color: var(--line-2);
   color: var(--text);
-}
-
-.text-link:hover span {
-  transform: translate(2px, -2px);
 }
 
 .pulse-dot {
@@ -1660,30 +1642,6 @@ ol {
   gap: 5px;
 }
 
-.project-tile__arrow {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: none;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--text-2);
-  font-size: 13px;
-  transition:
-    transform 0.25s var(--ease-out),
-    background 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.project-tile:hover .project-tile__arrow {
-  border-color: transparent;
-  background: var(--gradient);
-  color: #08080c;
-  transform: translate(2px, -2px);
-}
-
 .project-tile--featured {
   min-height: 470px;
 }
@@ -2307,7 +2265,7 @@ ol {
 
 .contact-links a {
   display: grid;
-  grid-template-columns: 80px minmax(0, 1fr) auto;
+  grid-template-columns: 80px minmax(0, 1fr);
   align-items: center;
   gap: 12px;
   padding: 13px 0;
@@ -2332,11 +2290,6 @@ ol {
   font-size: 12.5px;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.contact-links__arrow {
-  color: var(--faint);
-  font-size: 12px;
 }
 
 .contact-note {
@@ -2917,12 +2870,6 @@ ol {
     letter-spacing: 0.08em;
   }
 
-  .mobile-menu__arrow {
-    margin-left: auto;
-    color: var(--faint);
-    font-size: 18px;
-  }
-
   .mobile-menu__foot {
     display: flex;
     align-items: center;
@@ -3487,12 +3434,6 @@ ol {
     background-color 0.2s ease;
 }
 
-.intro__skip span {
-  color: var(--violet);
-  font-size: 12px;
-  line-height: 1;
-}
-
 .intro__skip:hover {
   border-color: rgba(167, 139, 250, 0.5);
   background: rgba(167, 139, 250, 0.08);
@@ -3610,8 +3551,7 @@ ol {
 :root[data-theme='light'] .skip-link,
 :root[data-theme='light'] .btn--primary,
 :root[data-theme='light'] .brand__mark,
-:root[data-theme='light'] .filter-chip.is-active,
-:root[data-theme='light'] .project-tile:hover .project-tile__arrow {
+:root[data-theme='light'] .filter-chip.is-active {
   color: #fbfaf7;
 }
 

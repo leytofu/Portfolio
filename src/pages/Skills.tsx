@@ -112,9 +112,6 @@ export default function Skills() {
               </p>
               <Link to="/projects" className="btn btn--primary btn--sm">
                 View projects
-                <span className="btn__arrow" aria-hidden="true">
-                  ↗
-                </span>
               </Link>
             </article>
           </Reveal>

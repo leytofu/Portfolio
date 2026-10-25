@@ -246,7 +246,6 @@ export function CinematicIntro({ onFinish }: { onFinish: () => void }) {
           onClick={onFinish}
         >
           Skip intro
-          <span aria-hidden="true">↗</span>
         </button>
       </motion.div>
     </motion.div>

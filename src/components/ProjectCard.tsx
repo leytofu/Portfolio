@@ -47,9 +47,6 @@ export function ProjectCard({ project, index, featured = false, wide = false }: 
                 </span>
               ))}
             </div>
-            <span className="project-tile__arrow" aria-hidden="true">
-              ↗
-            </span>
           </div>
         </div>
       </Link>

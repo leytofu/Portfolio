@@ -101,9 +101,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
             <Link to="/contact" className="btn btn--primary btn--sm nav-cta">
               Let&apos;s talk
-              <span className="btn__arrow" aria-hidden="true">
-                ↗
-              </span>
             </Link>
 
             <button
@@ -136,9 +133,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             >
               <span className="mobile-menu__index">0{index + 1}</span>
               {link.label}
-              <span className="mobile-menu__arrow" aria-hidden="true">
-                ↗
-              </span>
             </NavLink>
           ))}
         </nav>
@@ -178,9 +172,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <div className="footer-cta__actions">
               <a href={`mailto:${portfolio.hero.email}`} className="btn btn--primary">
                 Say hello
-                <span className="btn__arrow" aria-hidden="true">
-                  ↗
-                </span>
               </a>
               <a href={`mailto:${portfolio.hero.email}`} className="footer-cta__email">
                 {portfolio.hero.email}
@@ -204,7 +195,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               </a>
             </div>
             <a href="#top" className="footer-bottom__top">
-              Back to top <span aria-hidden="true">↑</span>
+              Back to top
             </a>
           </div>
         </div>

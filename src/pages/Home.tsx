@@ -68,15 +68,9 @@ export default function Home() {
               <div className="hero__actions">
                 <Link to="/projects" className="btn btn--primary">
                   View projects
-                  <span className="btn__arrow" aria-hidden="true">
-                    ↗
-                  </span>
                 </Link>
                 <a href={`mailto:${portfolio.hero.email}`} className="btn btn--ghost">
                   Get in touch
-                  <span className="btn__arrow" aria-hidden="true">
-                    →
-                  </span>
                 </a>
               </div>
 
@@ -179,7 +173,7 @@ export default function Home() {
             </h2>
           </div>
           <Link to="/projects" className="text-link">
-            All projects <span aria-hidden="true">↗</span>
+            All projects
           </Link>
         </div>
 
@@ -195,7 +189,7 @@ export default function Home() {
               </h3>
               <p className="bento__text">{portfolio.hero.about}</p>
               <Link to="/about" className="text-link">
-                More about me <span aria-hidden="true">↗</span>
+                More about me
               </Link>
             </article>
           </Reveal>
@@ -220,10 +214,15 @@ export default function Home() {
           {featuredProjects.map((project, index) => (
             <Reveal
               key={project.id}
-              className={index === 0 ? 'col-7' : 'col-5'}
+              className={featuredProjects.length === 1 ? 'col-12' : index === 0 ? 'col-7' : 'col-5'}
               delay={index * 0.05}
             >
-              <ProjectCard project={project} index={index} featured={index === 0} />
+              <ProjectCard
+                project={project}
+                index={index}
+                featured={index === 0}
+                wide={featuredProjects.length === 1}
+              />
             </Reveal>
           ))}
 
@@ -243,7 +242,7 @@ export default function Home() {
                 ))}
               </div>
               <Link to="/skills" className="text-link">
-                Full toolkit <span aria-hidden="true">↗</span>
+                Full toolkit
               </Link>
             </article>
           </Reveal>
@@ -283,9 +282,6 @@ export default function Home() {
               </p>
               <a href={`mailto:${portfolio.hero.email}`} className="btn btn--primary btn--sm">
                 Say hello
-                <span className="btn__arrow" aria-hidden="true">
-                  ↗
-                </span>
               </a>
             </article>
           </Reveal>

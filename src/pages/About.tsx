@@ -173,7 +173,7 @@ export default function About() {
                 ))}
               </div>
               <Link to="/skills" className="text-link">
-                See the full stack <span aria-hidden="true">↗</span>
+                See the full stack
               </Link>
             </article>
           </Reveal>

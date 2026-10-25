@@ -218,11 +218,6 @@ export default function Contact() {
                       : status === 'sent'
                         ? 'Message sent ✓'
                         : 'Send message'}
-                    {status === 'idle' && (
-                      <span className="btn__arrow" aria-hidden="true">
-                        ↗
-                      </span>
-                    )}
                   </button>
 
                   <p className="contact-form__hint" role="status" aria-live="polite">
@@ -246,7 +241,6 @@ export default function Contact() {
               <p className="eyebrow">Direct email</p>
               <a href={`mailto:${portfolio.hero.email}`} className="contact-email">
                 {portfolio.hero.email}
-                <span aria-hidden="true">↗</span>
               </a>
               <p className="bento__text">
                 The fastest way to reach me. I usually reply within a day.
@@ -269,9 +263,6 @@ export default function Contact() {
                       >
                         <span className="contact-links__label">{social.label}</span>
                         <span className="contact-links__value">{social.username}</span>
-                        <span className="contact-links__arrow" aria-hidden="true">
-                          ↗
-                        </span>
                       </a>
                     </li>
                   )
