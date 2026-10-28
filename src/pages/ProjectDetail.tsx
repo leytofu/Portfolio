@@ -67,17 +67,6 @@ export default function ProjectDetail() {
               <span className="mono-label">Stack</span>
               <span className="detail-meta__value">{project.tech.length} technologies</span>
             </div>
-            <div>
-              <span className="mono-label">Source</span>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                className="detail-meta__link"
-              >
-                GitHub
-              </a>
-            </div>
           </div>
         </article>
 

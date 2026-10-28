@@ -5,6 +5,7 @@ import { ProfilePortrait } from '@/components/ProfilePortrait'
 import { ProjectCard } from '@/components/ProjectCard'
 import { Reveal } from '@/components/Reveal'
 import { SocialLinks } from '@/components/SocialLinks'
+import { TypewriterName } from '@/components/TypewriterName'
 import { TechIcon } from '@/components/icons'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useAvailability } from '@/hooks/useAvailability'
@@ -54,10 +55,11 @@ export default function Home() {
                 <span className="hero__top-note">Portfolio · 2026</span>
               </div>
 
-              <h1 className="hero__title">
-                <span className="hero__title-line">{portfolio.hero.firstName}</span>
-                <span className="hero__title-line grad-text">{portfolio.hero.lastName}</span>
-              </h1>
+              <TypewriterName
+                first={portfolio.hero.firstName}
+                last={portfolio.hero.lastName}
+                start={!introActive}
+              />
 
               <p className="hero__role">
                 {portfolio.hero.role}
