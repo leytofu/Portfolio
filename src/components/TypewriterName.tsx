@@ -8,7 +8,7 @@ interface TypewriterNameProps {
 }
 
 /** Milliseconds between typed characters. */
-const SPEED = 82
+const SPEED = 70
 /** Pause after the first line before the surname starts. */
 const LINE_PAUSE = 260
 /** Delay before the first character so the hero reveal can settle. */
