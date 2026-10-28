@@ -71,9 +71,9 @@ export default function Home() {
                 <Link to="/projects" className="btn btn--primary">
                   View projects
                 </Link>
-                <a href={`mailto:${portfolio.hero.email}`} className="btn btn--ghost">
+                <Link to="/contact" className="btn btn--ghost">
                   Get in touch
-                </a>
+                </Link>
               </div>
 
               <div className="hero__social-row">
