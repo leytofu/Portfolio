@@ -131,7 +131,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               style={{ transitionDelay: `${index * 35}ms` }}
               onClick={() => setMenuOpen(false)}
             >
-              <span className="mobile-menu__index">0{index + 1}</span>
               {link.label}
             </NavLink>
           ))}
@@ -160,25 +159,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <footer className="site-footer">
         <div className="container">
-          <div className="footer-cta">
-            <div className="footer-cta__copy">
-              <p className="eyebrow">Next step</p>
-              <h2 className="footer-cta__title">
-                Have an idea?
-                <br />
-                <span className="grad-text">Let&apos;s build it.</span>
-              </h2>
-            </div>
-            <div className="footer-cta__actions">
-              <a href={`mailto:${portfolio.hero.email}`} className="btn btn--primary">
-                Say hello
-              </a>
-              <a href={`mailto:${portfolio.hero.email}`} className="footer-cta__email">
-                {portfolio.hero.email}
-              </a>
-            </div>
-          </div>
-
           <div className="footer-bottom">
             <p className="footer-bottom__copy">
               © {year} {portfolio.hero.firstName} {portfolio.hero.lastName}

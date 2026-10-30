@@ -85,60 +85,12 @@ export default function Home() {
 
           <Reveal className="hero__visual" delay={0.12}>
             <div className="portrait-frame">
-              <span className="portrait-frame__plate" aria-hidden="true" />
-              <div className="portrait-frame__glow" aria-hidden="true" />
-              <svg
-                className="portrait-frame__electricity"
-                viewBox="0 0 424 524"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-                focusable="false"
-              >
-                {/* Broken, jagged arcs travel around the frame without obscuring the photo. */}
-                <path
-                  className="portrait-frame__arc portrait-frame__arc--outer"
-                  pathLength="1000"
-                  d="M42 12 75 12 91 7 104 16 118 10 168 12 182 6 196 15 211 10 270 12 289 7 302 16 320 11 382 12 Q412 12 412 42 L412 79 418 96 408 109 415 126 412 178 419 194 408 209 414 225 412 291 418 307 408 321 414 338 412 395 419 413 408 429 413 445 412 482 Q412 512 382 512 L340 512 324 518 309 508 293 515 240 512 221 519 207 508 191 514 133 512 116 518 101 508 85 514 42 512 Q12 512 12 482 L12 443 6 426 16 411 9 394 12 337 5 318 16 302 10 286 12 225 6 209 16 192 9 176 12 123 5 105 16 90 11 74 12 42 Q12 12 42 12 Z"
-                />
-                <path
-                  className="portrait-frame__arc portrait-frame__arc--inner"
-                  pathLength="1000"
-                  d="M42 14 H116 L130 19 145 10 161 15 H267 L282 20 297 11 314 14 H382 Q410 14 410 42 V149 L405 164 415 181 410 197 V348 L404 364 414 380 410 397 V482 Q410 510 382 510 H302 L285 505 269 515 252 510 H113 L96 504 80 514 63 510 H42 Q14 510 14 482 V376 L19 359 9 343 14 327 V183 L20 167 10 151 14 134 V42 Q14 14 42 14 Z"
-                />
-                <path
-                  className="portrait-frame__spark"
-                  d="M84 11 71 0 60 4 43 -10 M412 132 425 116 420 103 436 85 M333 512 348 526 359 520 376 536 M12 378 -2 392 3 405 -12 421"
-                />
-              </svg>
-              <svg className="portrait-frame__bolt" viewBox="0 0 64 96" aria-hidden="true">
-                <defs>
-                  <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#c4b5fd" />
-                    <stop offset="50%" stopColor="#a78bfa" />
-                    <stop offset="100%" stopColor="#22d3ee" />
-                  </linearGradient>
-                  <linearGradient id="boltGradLight" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#7c3aed" />
-                    <stop offset="50%" stopColor="#6d28d9" />
-                    <stop offset="100%" stopColor="#0891b2" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M38 5 15 47h12l-5 44 28-53H37l1-33Z"
-                  fill="none"
-                  stroke="url(#boltGrad)"
-                  strokeWidth="2.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
               <div className="portrait-frame__media">
                 <ProfilePortrait alt={`${portfolio.hero.name} portrait`} initials={initials} />
-                <span className="portrait-frame__grain" aria-hidden="true" />
                 <div className="portrait-frame__meta">
                   <div>
                     <span className="mono-label">Focus</span>
-                    <span className="portrait-frame__value">Web · Mobile App</span>
+                    <span className="portrait-frame__value">Web</span>
                   </div>
                   <div>
                     <span className="mono-label">Studying</span>
@@ -158,7 +110,6 @@ export default function Home() {
               {marqueeTech.map((tech) => (
                 <span className="marquee__item" key={`${copy}-${tech}`}>
                   {tech}
-                  <span className="marquee__star">✦</span>
                 </span>
               ))}
             </div>

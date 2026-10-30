@@ -46,7 +46,7 @@ export default function Projects() {
             </div>
             <div className="intro-meta__row">
               <span className="mono-label">Focus</span>
-              <span>Web · Mobile App</span>
+              <span>Web</span>
             </div>
             <div className="intro-meta__row">
               <span className="mono-label">Year</span>

@@ -91,29 +91,6 @@ export function CinematicIntro({ onFinish }: { onFinish: () => void }) {
       }}
     >
       <motion.div
-        className="intro__atmosphere"
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, scale: 1.03, transition: { duration: 0.45, ease: EASE_OUT } }}
-        transition={{ duration: 0.55, ease: EASE_OUT }}
-      >
-        <div className="intro__aurora intro__aurora--violet" />
-        <div className="intro__aurora intro__aurora--cyan" />
-        <div className="intro__grid" />
-        <div className="intro__grain" />
-        <div className="intro__vignette" />
-      </motion.div>
-
-      <motion.div
-        className="intro__flash"
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.55, 0] }}
-        transition={{ delay: 1.15, duration: 0.4, times: [0, 0.35, 1], ease: 'easeOut' }}
-      />
-
-      <motion.div
         className="intro__content"
         exit={{
           opacity: 0,

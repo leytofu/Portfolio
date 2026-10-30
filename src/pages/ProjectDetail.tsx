@@ -48,7 +48,6 @@ export default function ProjectDetail() {
         </div>
 
         <div className="detail-hero__visual">
-          <div className="detail-hero__glow" aria-hidden="true" />
           <ProjectThumbnail id={project.id} />
         </div>
       </section>

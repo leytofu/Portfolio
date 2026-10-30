@@ -114,71 +114,30 @@ export function AboutAvatar({ className = '' }: { className?: string }) {
 export function ProjectThumbnail({ id, className = '' }: { id: string; className?: string }) {
   if (id === 'islasafe-emergency') {
     return (
-      <div className={`project-card__thumb ${className} project-card__thumb--2`}>
-        <svg
-          viewBox="0 0 480 270"
-          fill="none"
-          preserveAspectRatio="xMidYMid slice"
-          className="project-card__thumb-svg"
-        >
-          <defs>
-            <linearGradient id="oceanBg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#041527" />
-              <stop offset="50%" stopColor="#06253c" />
-              <stop offset="100%" stopColor="#02101e" />
-            </linearGradient>
-            <radialGradient id="radarPulse" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.3" />
-              <stop offset="70%" stopColor="#0284c7" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="480" height="270" fill="url(#oceanBg)" />
-          <g stroke="#1e3a5f" strokeWidth="0.75" strokeDasharray="3 3">
-            <line x1="80" y1="0" x2="80" y2="270" />
-            <line x1="180" y1="0" x2="180" y2="270" />
-            <line x1="280" y1="0" x2="280" y2="270" />
-            <line x1="380" y1="0" x2="380" y2="270" />
-            <line x1="0" y1="65" x2="480" y2="65" />
-            <line x1="0" y1="135" x2="480" y2="135" />
-            <line x1="0" y1="205" x2="480" y2="205" />
-          </g>
-          <path
-            d="M 60 50 Q 110 30 140 70 Q 160 110 130 150 Q 90 170 70 120 Z"
-            fill="#154030"
-            stroke="#22c55e"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M 220 80 Q 280 60 310 110 Q 340 180 290 220 Q 240 230 210 170 Q 190 120 220 80 Z"
-            fill="#133d2e"
-            stroke="#22c55e"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M 360 40 Q 420 30 440 80 Q 430 130 380 110 Z"
-            fill="#154030"
-            stroke="#22c55e"
-            strokeWidth="1.2"
-          />
-          <circle cx="260" cy="135" r="85" fill="url(#radarPulse)" />
-          <circle cx="260" cy="135" r="55" stroke="#38bdf8" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4" />
-          <circle cx="260" cy="135" r="95" stroke="#38bdf8" strokeWidth="0.8" strokeOpacity="0.25" />
-          <g transform="translate(260, 135)">
-            <circle cx="0" cy="0" r="14" fill="#ef4444" fillOpacity="0.25" />
-            <circle cx="0" cy="0" r="7" fill="#ef4444" />
-            <path d="M0 -12 L0 -6" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
-            <circle cx="0" cy="-15" r="1" fill="#fff" />
-          </g>
-          <g transform="translate(120, 100)">
-            <circle cx="0" cy="0" r="10" fill="#22c55e" fillOpacity="0.25" />
-            <circle cx="0" cy="0" r="5" fill="#22c55e" />
-          </g>
-          <rect x="20" y="16" width="180" height="36" rx="6" fill="#040f1a" fillOpacity="0.9" stroke="#1e3a5f" strokeWidth="1" />
-          <circle cx="36" cy="34" r="4" fill="#ef4444" />
-          <text x="48" y="32" fill="#e2e8f0" fontSize="10" fontWeight="700" fontFamily="sans-serif">INCIDENT LIVE FEED</text>
-          <text x="48" y="44" fill="#38bdf8" fontSize="8.5" fontFamily="monospace">14.5995° N, 120.9842° E</text>
-        </svg>
+      <div className={`project-card__thumb ${className} project-card__thumb--map`}>
+        <img
+          src="/images/islasafe-cpg-map.png"
+          srcSet="/images/islasafe-cpg-map.png 1x, /images/islasafe-cpg-map@2x.png 2x"
+          width={1200}
+          height={675}
+          alt="Map of President Carlos P. Garcia, Bohol, showing Lapinpin Island and its surrounding islets."
+          className="project-card__map-img"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="project-card__map-ui">
+          <div className="project-card__map-head">
+            <span className="project-card__map-feed">
+              <span className="project-card__map-dot" />
+              Incident feed
+            </span>
+            <span className="project-card__map-meta">
+              10.1222° N · 124.5522° E
+              <span className="project-card__map-credit">© OpenStreetMap · Esri</span>
+            </span>
+          </div>
+          <span className="project-card__map-pin" aria-hidden="true" />
+        </div>
       </div>
     )
   }

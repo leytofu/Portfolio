@@ -67,7 +67,7 @@ export default function About() {
                 </div>
                 <div className="fact">
                   <span className="mono-label">Focus</span>
-                  <span className="fact__value">Web · Mobile App</span>
+                  <span className="fact__value">Web</span>
                 </div>
                 <div className="fact">
                   <span className="mono-label">Status</span>

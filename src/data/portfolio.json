@@ -21,7 +21,7 @@
   ],
   "stats": [
     { "value": "1", "label": "Key Projects" },
-    { "value": "9+", "label": "Technologies" },
+    { "value": "12", "label": "Technologies" },
     { "value": "4th", "label": "Year IT Student" }
   ],
   "featured": [
@@ -90,6 +90,8 @@
     { "name": "Node.js", "color": "#339933", "type": "backend" },
     { "name": "PostgreSQL", "color": "#336791", "type": "database" },
     { "name": "Git", "color": "#f05032", "type": "tool" },
+    { "name": "GitHub", "color": "#e6edf3", "type": "tool" },
+    { "name": "GitLab", "color": "#fc6d26", "type": "tool" },
     { "name": "VS Code", "color": "#007acc", "type": "tool" }
   ],
   "contacts": [
